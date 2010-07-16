@@ -1,0 +1,44 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,twoside,12pt]{book}
+
+\usepackage{mystyle}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{\Huge\bf Sage for High School}
+\author{\Large Minh Van Nguyen}
+\date{Version~\documentEdition}
+\maketitle
+
+%% Copyright page
+{\thispagestyle{empty}
+  \input{tex/notice.tex} \\\\
+  \textbf{Edition} \\
+  Version~\documentEdition \\
+  \today
+}
+
+%% front matter
+\frontmatter
+% Setting the TOC depth: only list chapters and sections
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\mainmatter
+
+%% Main document body
+\input{tex/unique-factorization.tex}
+
+%% Appendices
+\appendix
+\input{tex/license-gfdl.tex}
+
+%% Back matter
+\backmatter
+\printindex
+
+\end{document}
