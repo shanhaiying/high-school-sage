@@ -82,7 +82,7 @@ if [ "$1" = "--revision" ]; then
 else
     echo "Wrap up version release..."
     VERSION="$1"
-    NAME="factorize-"
+    NAME="high-school-sage-"
     echo "$1" > "$BOOK_ROOT"/tex/version.tex
     hg diff
     hg status
