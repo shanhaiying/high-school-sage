@@ -28,9 +28,8 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 
+%% main document body
 \mainmatter
-
-%% Main document body
 \input{tex/algebraic-simplify.tex}
 \input{tex/surds-log.tex}
 \input{tex/number-theory.tex}
@@ -44,12 +43,13 @@
 \input{tex/polar-conic.tex}
 \input{tex/statistics-probability.tex}
 
-%% Appendices
+%% appendices
 \appendix
 \input{tex/license-gfdl.tex}
 
-%% Back matter
+%% back matter
 \backmatter
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Index}
 \printindex
-
 \end{document}
