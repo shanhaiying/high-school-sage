@@ -69,3 +69,133 @@ sage: a + b^2 - 4*a*b + 3*a - b^2 - 2*a*b
 sage: 3*(x^2)*(y^3) + 4*x*(y^2) - 9*(y^3)*(x^2) - 7*(y^2)*x
 -6*x^2*y^3 - 3*x*y^2
 \end{lstlisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Distributive laws}
+\index{distributive laws}
+
+An expression such as
+%
+\begin{equation}
+\label{eq:algebraic_simplify:simplify_with_left_distributive_law}
+7 \times (9 + 1)
+\end{equation}
+%
+can be calculated in various ways. We can first simplify the
+expression within the parentheses to get $10$, then multiply this
+result with the number outside the parentheses to get $70$:
+\[
+7 \times (9 + 1)
+=
+7 \times 10
+=
+70.
+\]
+An alternative method for
+simplifying~(\ref{eq:algebraic_simplify:simplify_with_left_distributive_law})
+is via the left distributive law\index{distributive law!left}, also
+called ``expanding the brackets.'' Take the term to the left
+of~(\ref{eq:algebraic_simplify:simplify_with_left_distributive_law})
+and multiply that with each term inside the parentheses. Add up the
+result to get a simplified expression:
+\[
+7 \times (9 + 1)
+=
+7 \times 9 + 7 \times 1
+=
+63 + 7
+=
+70.
+\]
+%
+\begin{lstlisting}
+sage: 7 * (9 + 1)
+70
+sage: 7*9 + 7*1
+70
+\end{lstlisting}
+%
+The left distributive law\index{distributive law!left} is
+%
+\begin{equation}
+\label{eq:algebraic_simplify:left_distributive_law}
+\begin{aligned}
+a(b + c) &= ab + ac \\
+a(b + c + d) &= ab + ac + ad.
+\end{aligned}
+\end{equation}
+
+\begin{lstlisting}
+sage: a, b, c = var("a, b, c")
+sage: expand(a * (b + c))
+a*b + a*c
+sage: bool(a * (b + c) == a*b + a*c)
+True
+\end{lstlisting}
+
+The right distributive law\index{distributive law!right} works
+similarly to its left counterpart
+in~(\ref{eq:algebraic_simplify:left_distributive_law}):
+%
+\begin{equation}
+\label{eq:algebraic_simplify:right_distributive_law}
+\begin{aligned}
+(b + c)a &= ab + ac \\
+(b + c + d)a &= ab + ac + ad.
+\end{aligned}
+\end{equation}
+%
+We take the term to the right of the parentheses, multiply it with
+each term inside the parentheses, finally summing to get a simplified
+expression. For example,
+\[
+(5 + 3) \times 9
+=
+5 \times 9 + 3 \times 9
+=
+45 + 27
+=
+72.
+\]
+
+\begin{lstlisting}
+sage: (5 + 3) * 9
+72
+sage: (5*9) + (3*9)
+72
+sage: a, b, c = var("a, b, c")
+sage: expand((b + c) * a)
+a*b + a*c
+\end{lstlisting}
+
+The rules~(\ref{eq:algebraic_simplify:left_distributive_law})
+and~(\ref{eq:algebraic_simplify:right_distributive_law}) are
+collectively referred to as the distributive laws\index{distributive laws}.
+These rules can be repeatedly applied to simplify expressions such as
+\[
+7(4x - 3) - 3(3 - 5x)
+\]
+and
+\[
+7b(b^2 + 2b - 3) + 3b(b^2 - 4b + 1).
+\]
+
+\begin{lstlisting}
+sage: x, b = var("x, b")
+sage: # first simplify 7(4x - 3) - 3(3 - 5x)
+sage: f = expand(7*(4*x - 3)); f
+28*x - 21
+sage: g = expand(3*(3 - 5*x)); g
+-15*x + 9
+sage: simplify(f - g)
+43*x - 30
+sage: # now simplify 7b(b^2 + 2b - 3) + 3b(b^2 - 4b + 1)
+sage: f = expand(7*b*(b^2 + 2*b - 3)); f
+7*b^3 + 14*b^2 - 21*b
+sage: g = expand(3*b*(b^2 - 4*b + 1)); g
+3*b^3 - 12*b^2 + 3*b
+sage: simplify(f + g)
+10*b^3 + 2*b^2 - 18*b
+\end{lstlisting}
