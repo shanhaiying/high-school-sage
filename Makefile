@@ -10,6 +10,7 @@ all:
 	make latex
 	makeindex $(FILE)
 	make latex
+	make clean
 
 latex:
 	pdflatex $(FILE).tex
