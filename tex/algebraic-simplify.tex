@@ -3,8 +3,6 @@
 \chapter{Algebraic Simplification}
 
 \begin{enumerate}
-\item Simplifying expressions involving addition and subtraction.
-
 \item Simplifying algebraic expressions using the distributive laws:
   \begin{enumerate}
   \item binomial expansion: $(a + b)(c + d) = ac + ad + bc + bd$
@@ -30,3 +28,43 @@
   \item division of rational expressions
   \end{enumerate}
 \end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Collect like terms}
+
+In simplifying an algebraic expression, a basic technique is
+identifying like terms, simplify them and in the process we also
+simplify the whole expression. Two like terms can be simplified to one
+term because only like terms can be added or subtracted. The
+expression
+%
+\begin{equation}
+\label{eq:algebraic_simplify:has_like_terms}
+5x + 12x + 17y
+\end{equation}
+%
+can be simplified because $5x$ and $12x$ are like
+terms. Contrast~(\ref{eq:algebraic_simplify:has_like_terms}) with
+\[
+3x + 7y
+\]
+which has no like terms and cannot be simplified any further.
+
+\begin{lstlisting}
+sage: x, y = var("x, y")
+sage: 5*x + 12*x + 17*y
+17*x + 17*y
+sage: simplify(5*x + 12*x + 17*y)
+17*x + 17*y
+sage: 3*x + 7*y
+3*x + 7*y
+sage: simplify(3*x + 7*y)
+3*x + 7*y
+sage: a, b, m, n = var("a, b, m, n")
+sage: a + b^2 - 4*a*b + 3*a - b^2 - 2*a*b
+-6*a*b + 4*a
+sage: 3*(x^2)*(y^3) + 4*x*(y^2) - 9*(y^3)*(x^2) - 7*(y^2)*x
+-6*x^2*y^3 - 3*x*y^2
+\end{lstlisting}
