@@ -2,19 +2,6 @@
 
 \chapter{Algebraic Simplification}
 
-\begin{enumerate}
-\item Simplifying rational expressions:
-  \begin{enumerate}
-  \item addition of rational expressions
-
-  \item subtraction of rational expressions
-
-  \item multiplication of rational expressions
-
-  \item division of rational expressions
-  \end{enumerate}
-\end{enumerate}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -210,7 +197,7 @@ sage: expand((a + b) * (c + d))
 a*c + a*d + b*c + b*d
 \end{lstlisting}
 
-Carefully inspect the above Sage code listing. We used the simicolon
+Carefully inspect the above Sage code listing. We used the semicolon
 ``\texttt{;}'' to suppress the output of the command \texttt{var}. The
 expression~(\ref{eq:algebraic_simplify:binomial_expansion}) is called
 a \emph{binomial expansion}\index{binomial expansion}. Here is an
@@ -418,7 +405,7 @@ a^3 + 3a^2b + 3ab^2 + b^3.
 \end{aligned}
 \end{equation}
 %
-Similary, we use binomial expansion
+Similarly, we use binomial expansion
 and~(\ref{eq:algebraic_simplify:perfect_squares_minus}) to simplify
 the perfect cube $(a - b)^3$:
 %
@@ -466,3 +453,165 @@ x^3 - 15*x^2*y + 75*x*y^2 - 125*y^3
 sage: expand((x - 5*y)^3)
 x^3 - 15*x^2*y + 75*x*y^2 - 125*y^3
 \end{lstlisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Rational expressions}
+\index{rational expression}
+
+A rational number is any number that can be written as a
+fraction. Similarly, a
+\emph{rational expression}\index{rational expression} is a fraction whose
+numerator and denominator are both algebraic expressions. Examples of
+rational expressions include
+\[
+\frac{1}{x},
+\qquad
+\frac{x + 3}{2},
+\qquad
+\frac{x^2}{(y - 2)^3}.
+\]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Adding and subtracting rational expressions}
+\index{rational expression!addition}
+\index{rational expression!subtraction}
+
+In arithmetic, to add or subtract two fractions, we first express the
+fractions with the same denominator. The same idea applies when we
+want to add or subtract two rational
+expressions\index{rational expression!addition}.
+
+For example, to add the rational expression
+\[
+\frac{x + 2}{3} + \frac{x + 3}{5}
+\]
+first we need to write the fractions with the same
+denominator. Multiply $\frac{x + 2}{3}$ by $\frac{5}{5}$, and multiply
+$\frac{x + 3}{5}$ by $\frac{3}{3}$. Then go ahead with adding the
+resulting fractions. If necessary, use the distributive laws and
+binomial expansion to simplify the result:
+%
+\begin{align*}
+\frac{x + 2}{3} + \frac{x + 3}{5}
+&=
+\frac{5}{5} \times \frac{x + 2}{3} + \frac{3}{3} \times \frac{x + 3}{5} \\[4pt]
+&=
+\frac{5(x + 2)}{15} + \frac{3(x + 3)}{15} \\[4pt]
+&=
+\frac{5x + 10}{15} + \frac{3x + 9}{15} \\[4pt]
+&=
+\frac{8x + 19}{15}.
+\end{align*}
+%
+We can also calculate the numerator and denominator as follows:
+
+\begin{lstlisting}
+sage: expand(5*(x + 2) + 3*(x + 3))
+8*x + 19
+sage: 5*3
+15
+\end{lstlisting}
+
+Subtracting\index{rational expression!subtraction} two rational
+expressions involves the same process: we need to write the two
+fractions with a common denominator. Here's a slightly more
+complicated rational expression:
+\[
+\frac{3x}{x - 2} + \frac{y + 5}{x + 3}.
+\]
+Again, we need to first write both fractions with a common
+denominator. Next, use the distributive laws and, if necessary,
+binomial expansion to simplify our result:
+%
+\begin{align*}
+\frac{3x}{x - 2} + \frac{y + 5}{x + 3}
+&=
+\frac{x + 3}{x + 3} \times \frac{3x}{x - 2}
++
+\frac{x - 2}{x - 2} \times \frac{y + 5}{x + 3} \\
+&=
+\frac{3x(x + 3)}{(x - 2)(x + 3)}
++
+\frac{(y + 5)(x - 2)}{(x + 3)(x - 2)} \\
+&=
+\frac{3x^2 + 9x}{x^2 + x - 6} + \frac{xy + 5x - 2y - 10}{x^2 + x - 6} \\
+&=
+\frac{3x^2 + xy + 14x - 2y - 10} {x^2 + x - 6}.
+\end{align*}
+%
+We can also calculate the numerator and denominator as follows:
+
+\begin{lstlisting}
+sage: var("x, y");
+sage: expand(3*x*(x + 3) + (y + 5)*(x - 2))
+3*x^2 + x*y + 14*x - 2*y - 10
+sage: expand((x - 2) * (x + 3))
+x^2 + x - 6
+\end{lstlisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Multiplying and dividing rational expressions}
+\index{rational expression!multiplication}
+\index{rational expression!division}
+
+In arithmetic, we multiply two fractions by first cancelling any
+factors common to the numerator and denominator. Then we proceed with
+multiplying the remaining terms in the numerator and
+denominator. Carrying this process over to rational expressions, we
+multiply the expression\index{rational expression!multiplication}
+\[
+\frac{3a}{5} \times \frac{11}{ab}
+\]
+as follows:
+%
+\begin{align*}
+\frac{3a}{5} \times \frac{11}{ab}
+&=
+\frac{3}{5} \times \frac{11}{b} \\[4pt]
+&=
+\frac{33}{5b}.
+\end{align*}
+%
+And for a slightly more complicated rational expression:
+%
+\begin{align*}
+\frac{(x + 3) (x - 1)} {(x - 4)} \times \frac{(4 - x)} {(x - 1)}
+&=
+\frac{(x + 3)} {(x - 4)} \times \frac{(4 - x)} {1} \\[4pt]
+&=
+\frac{(x + 3)(4 - x)} {(x - 4)} \\[4pt]
+&=
+\frac{-x^2 + x + 12} {x - 4}.
+\end{align*}
+%
+Notice that we first cancelled the factor $(x - 1)$ in the numerator
+and denominator. The numerator and denominator can then be computed as
+follows:
+
+\begin{lstlisting}
+sage: expand((x + 3) * (4 - x))
+-x^2 + x + 12
+sage: expand((x - 4) * 1)
+x - 4
+\end{lstlisting}
+
+To divide\index{rational expression!division} one rational expression
+by another, we invert the second rational expression and change the
+division sign to a multiplication sign. The original division of
+rational expressions is now a multiplication of rational
+expressions. Say we want to simplify the following expression
+\[
+\frac{5a}{3} \div \frac{7a}{13}.
+\]
+The first step is to consider $\frac{7a}{13}$ and flip its numerator
+and denominator around to get
+\[
+\frac{5a}{3} \times \frac{13}{7a}.
+\]
+Now multiply the last expression as we have discussed above.
