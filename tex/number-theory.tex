@@ -257,3 +257,214 @@ sage: factor(6)
 sage: factor(8)
 2^3
 \end{lstlisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Greatest common divisors}
+
+Let $a$ and $b$ be integers, not both zero. The \emph{greatest common}
+divisor~(GCD) of $a$ and $b$ is the largest positive integer which is
+a factor of both $a$ and $b$. We use $\gcd(a,b)$ to denote this
+largest positive factor. If $n$ is any positive integer, then
+$\gcd(n, 0) = n = \gcd(0, n)$. If $a$ and $b$ are both zero, then we
+define their GCD to be $\gcd(0,0) = 0$. The GCD of any two distinct
+primes is $1$, and the GCD of $18$ and $27$ is $9$.
+%
+\begin{lstlisting}
+sage: gcd(0, 0)
+0
+sage: gcd(12, 0)
+12
+sage: gcd(13, 0)
+13
+sage: N = [1..20]; N
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+sage: G = []
+sage: for i in N:
+...       G.append(gcd(i, 0))
+sage: N
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+sage: G
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+\end{lstlisting}
+%
+In the above code listing, we used the command \verb![1..20]! to
+obtain a list of all integers from $1$ to $20$, inclusive.
+
+To find the GCD of $18$ and $27$, we could first use \verb!divisors!
+to find the set of all positive divisors of each integer. We then
+compare the set of divisors for $18$ with that for $27$, picking out
+any integers that are common to both sets. From among all the divisors
+that are common to both $18$ and $27$, we choose the largest such
+divisor. The result is the GCD of $18$ and $27$.
+%
+\begin{lstlisting}
+sage: D18 = Set(divisors(18)); D18
+{1, 2, 3, 6, 9, 18}
+sage: D27 = Set(divisors(27)); D27
+{3, 1, 27, 9}
+sage: D = D18.intersection(D27); D
+{1, 3, 9}
+sage: max(D)
+9
+\end{lstlisting}
+%
+The output of \verb!divisors! is a list. We used the command
+\verb!Set! to convert the result of \verb!divisors! into a set. We
+then used \verb!intersection! to produce the intersection of the two
+sets \verb!D18! and \verb!D27!; this intersection is the set
+\verb!D!. Finally, we used \verb!max! to compute the maximum element
+in the set \verb!D!, i.e. $9$, the GCD we require.
+
+Sage uses \verb!gcd(a, b)! to denote the GCD of $a$ and $b$. The GCD
+of any two integers can be computed as follows:
+%
+\begin{lstlisting}
+sage: gcd(3, 59)
+1
+sage: gcd(18, 27)
+9
+\end{lstlisting}
+
+What about the case where any of $a$ and $b$ is negative? For example,
+how do we compute the GCD of $-18$ and $27$, or $\gcd(-18, -27)$? If
+$a$ is negative, for example, then we compute its
+\emph{absolute value} and use that value to find the GCD of $a$ and
+$b$. The absolute value of a number $x$ is written as $|x|$ and is
+defined as
+\[
+|x|
+=
+\begin{cases}
+x, & \text{if $x \geq 0$}, \\
+-1 \times x, & \text{if $x < 0$}.
+\end{cases}
+\]
+For example, the absolute value of $27$ is $|27| = 27$ because
+$27 \geq 0$; the absolute value of $-18$ is
+$|-18| = -1 \times (-18) = 18$ because $-18$ is negative. Then the GCD
+of $-18$ and $27$ is
+%
+\begin{align*}
+\gcd(-18, 27)
+&=
+\gcd(|-18|, 27) \\
+&=
+\gcd(18, 27) \\
+&=
+9.
+\end{align*}
+
+\begin{lstlisting}
+sage: gcd(18, 27)
+9
+sage: gcd(-18, 27)
+9
+sage: gcd(-18, -27)
+9
+sage: # positive values of a, with b = 27
+sage: N = [1..10]; N
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+sage: G = []
+sage: for i in N:
+...       G.append(gcd(i, 27))
+sage: G
+[1, 1, 3, 1, 1, 3, 1, 1, 9, 1]
+sage: # negative values of a, with b = 27
+sage: N = [-1..-10, step=-1]; N
+[-1, -2, -3, -4, -5, -6, -7, -8, -9, -10]
+sage: G = []
+sage: for i in N:
+...       G.append(gcd(i, 27))
+sage: G
+[1, 1, 3, 1, 1, 3, 1, 1, 9, 1]
+\end{lstlisting}
+
+Figure~\ref{fig:number_theory:gcd_n_27} plots $\gcd(n, 27)$ for
+integer values of $n$ from $1$ to $100$, inclusive. The horizontal
+axis shows the values of $n$, while the vertical axis shows the values
+of $\gcd(n, 27)$.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[scale=1.0]{images/gcd-100}
+\caption{The GCD of $n$ and $27$ for $n = 1, 2, \dots, 100$.}
+\label{fig:number_theory:gcd_n_27}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Relatively prime integers}
+
+If $\gcd(a,b) = 1$, we say that $a$ is \emph{coprime}~(or relatively
+prime) to $b$.  In particular, $\gcd(3, 59) = 1$ so 3 is coprime to 59
+and vice versa.
+
+Consider all the integers from 1 to 20, inclusive.  List all those
+integers that are coprime to 20.  In other words, find those integers
+$n$, where $1 \leq n \leq 20$, such that $\gcd(n,20) = 1$. The latter
+task can be easily accomplished with a little bit of Sage programming:
+
+\begin{lstlisting}
+sage: for n in range(1, 21):
+...       if gcd(n, 20) == 1:
+...           print(n),
+1 3 7 9 11 13 17 19
+\end{lstlisting}
+
+The above commands can be placed inside a function called
+\verb!my_phi20! to save the hassle of retyping them everytime we want
+to use those exact commands.
+
+\begin{lstlisting}
+sage: def my_phi20():
+...       for n in range(1, 21):
+...           if gcd(n, 20) == 1:
+...               print(n),
+sage: my_phi20()
+1 3 7 9 11 13 17 19
+\end{lstlisting}
+%
+From the output of \verb!my_phi20!, note that there are $8$ integers
+between $1$ and $20$, inclusive, that are coprime to $20$. Without
+explicitly generating the list
+%
+\begin{equation}
+\label{eq:integers_coprime_to_20}
+1 \quad 3 \quad 7 \quad 9 \quad 11 \quad 13 \quad 17 \quad 19
+\end{equation}
+%
+how can we compute the number of integers between $1$ and $20$,
+inclusive, that are coprime to 20? We could modify our function
+\verb!my_phi20! so that it finds the number of positive integers that
+are coprime to a given integer $n$.
+
+\begin{lstlisting}
+sage: def my_phi(n):
+...       coprime = []
+...       for i in range(1, n+1):
+...           if gcd(i, n) == 1:
+...               coprime.append(i)
+...       return len(coprime)
+sage: my_phi(20)
+8
+sage: my_phi(50)
+20
+sage: my_phi(100)
+40
+\end{lstlisting}
+
+Alternatively, we could use the \emph{Euler phi function}
+$\varphi(n)$, whose corresponding Sage built-in function is
+\verb!euler_phi!.
+
+\begin{lstlisting}
+sage: euler_phi(20)
+8
+sage: euler_phi(50)
+20
+sage: euler_phi(100)
+40
+\end{lstlisting}
