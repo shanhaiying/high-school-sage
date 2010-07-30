@@ -630,3 +630,108 @@ sage: 51 / 15
 sage: (7/5) + (6/3)
 17/5
 \end{lstlisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Clock arithmetic}
+
+When one integer is divided by a nonzero integer, we usually get a
+remainder. For example, upon dividing 23 by 5, we get a remainder of
+3; when 8 is divided by 5, the remainder is again 3. Clock arithmetic,
+or congruence, is very useful for discussing the situation in which
+two integers have the same remainder upon division by a nonzero
+integer. Let $a,b,n$ be integers such that $n \neq 0$. If $a$ and $b$
+have the same remainder upon division by $n$, then we say that $a$ is
+\emph{congruent} to $b$ modulo $n$ and denote this relationship by
+writing
+\[
+a \equiv b \pmod{n}.
+\]
+This definition is equivalent to saying that $a - b$ is a factor of
+$n$. Thus $23 \equiv 8 \pmod{5}$ because when both 23 and 8 are
+divided by 5, we end up with a remainder of 3.
+
+What has all this got to do with a clock, other than the name
+``clock arithmetic''? To understand congruence, consider the standard
+12-hour clock face shown in
+Figure~\ref{fig:number_theory:12_hour_clock_face}. The time $1$ AM
+corresponds to $1$, $2$ AM corresponds to $2$, and so on, up to $12$
+noon which corresponds to $12$. When we count past $12$ noon, it's
+$1$~PM which corresponds to $13$. But how did we get from $13$ back to
+$1$? We find the remainder when $13$ is divided by $12$; the required
+remainder is $1$. Furthermore, $2$ PM corresponds to $14$. The number
+$2$ is the remainder upon dividing $14$ by $12$. So when we count past
+$12$, we start all over again from $1$. In this way, the integers from
+$1$ up to and including $12$ form the twelve hours of a clock face. In
+the notation of congruence, we write $1 \equiv 13 \pmod{12}$ and
+$2 \equiv 14 \pmod{12}$.
+
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}
+[nodedecorate/.style={shape=circle,inner sep=2pt,draw,thick,fill=black},%
+  linedecorate/.style={-,thick},%
+  scale=3]
+\draw [thick] (0,0) circle (1cm);
+%% nodes or vertices
+\foreach \nodename/\x/\y/\direction/\navigate in {
+  1/0.5/0.866/above right/east, 2/0.866/0.5/right/east,
+  3/1/0/right/east, 4/0.866/-0.5/right/east,
+  5/0.5/-0.866/below right/east, 6/0/-1/below/south,
+  7/-0.5/-0.866/below left/south, 8/-0.866/-0.5/left/west,
+  9/-1/0/left/west, 10/-0.866/0.5/left/west,
+  11/-0.5/0.866/above left/west, 12/0/1/above/north}
+{
+  \node (\nodename) at (\x,\y) [nodedecorate] {};
+  \node [\direction] at (\nodename.\navigate) {$\nodename$};
+}
+\end{tikzpicture}
+\caption{A $12$-hour clock face.}
+\label{fig:number_theory:12_hour_clock_face}
+\end{figure}
+
+The command \verb!mod! allows us to compute such a remainder.
+
+\begin{lstlisting}
+sage: mod(23, 5)
+3
+sage: mod(8, 5)
+3
+sage: mod(1, 12)
+1
+sage: mod(2, 12)
+2
+sage: mod(13, 12)
+1
+sage: mod(14, 12)
+2
+\end{lstlisting}
+
+If \verb!n! is an integer, we could also use \verb!n.quo_rem(m)! to
+obtain the quotient and remainder upon dividing \verb!n! by
+\verb!m!. The output of \verb!n.quo_rem(m)! is tuple consisting of two
+integers. The first integer is the quotient and the second is the
+remainder.
+%
+\begin{lstlisting}
+sage: 1.quo_rem(12)
+(0, 1)
+sage: q, r = 14.quo_rem(12)
+sage: q; r
+1
+2
+sage: r == Integer(mod(14, 12))
+True
+sage: r == mod(14, 12).lift()
+True
+sage: r; mod(14, 12)
+2
+2
+\end{lstlisting}
+%
+In the last code listing, we first converted \verb!mod(14, 12)! to an
+integer using \verb!Integer!. The result is then compared with the
+remainder \verb!r!. We could also use \verb!mod(14, 12).lift()! to
+convert the output of \verb!mod(14, 12)! to an integer prior to
+comparing with \verb!r!.
