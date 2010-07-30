@@ -58,3 +58,158 @@ False
 \end{lstlisting}
 %
 gives \verb!False! because $3.1415$ is not an integer.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Prime numbers}
+
+A positive integer $n > 1$ is a \emph{prime} number if its factors are
+exclusively $1$ and itself. The integer $2$ is prime because its only
+factors are $1$ and $2$. As a matter of fact, $2$ is the smallest
+prime integer. The next prime after $2$ is $3$. However, the next
+integer $4$ is not prime because $2$ is a factor of $4$. In Sage, the
+command \verb!is_prime! tests whether or not an integer is prime. We
+can obtain the first $15$ prime numbers using the command
+\verb!primes_first_n!.
+
+\begin{lstlisting}
+sage: is_prime(1)
+False
+sage: is_prime(2)
+True
+sage: is_prime(3)
+True
+sage: is_prime(4)
+False
+sage: primes_first_n(15)
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+\end{lstlisting}
+
+If $n$ is an integer, the command \verb!next_prime! can be used to
+compute the next prime integer starting from $n$. Likewise, the command
+\verb!previous_prime! computes the previous prime integer starting
+from $n$.
+%
+\begin{lstlisting}
+sage: next_prime(-25)
+2
+sage: next_prime(1)
+2
+sage: next_prime(50)
+53
+sage: previous_prime(50)
+47
+sage: previous_prime(3)
+2
+sage: previous_prime(2)
+Traceback (most recent call last):
+...
+ValueError: no previous prime
+\end{lstlisting}
+%
+The command
+%
+\begin{lstlisting}
+sage: next_prime(-25)
+2
+\end{lstlisting}
+%
+results in \verb!2! because $2$ is the smallest prime. In other words,
+there are no primes smaller than $2$, which explains the result of the
+following command:
+%
+\begin{lstlisting}
+sage: previous_prime(2)
+Traceback (most recent call last):
+...
+ValueError: no previous prime
+\end{lstlisting}
+
+There are various questions we can ask about prime numbers. For
+example, how many prime integers are there? Over two thousand years
+ago, the Greek mathematician Euclid proved that there are infinitely
+many primes. No matter how high up we count, there is still a prime
+number to be found.
+
+Here's another question: If $n$ is a positive integer greater than
+$1$, how many primes are there between $1$ and $n$? In the case of $n
+= 50$, we could use the command \verb!primes_first_n! to list the
+first 20 primes, then count how many of those primes are less than or
+equal to $50$.
+%
+\begin{lstlisting}
+sage: primes_first_n(20)
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71]
+sage: P = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]; P
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+sage: len(P)
+15
+\end{lstlisting}
+%
+In the above code listing, we put all the primes less than or equal to
+$50$ into the list \verb!P!. We then used the command \verb!len! to
+obtain the length of that list. From the above output, there are $15$
+primes less than or equal to $n = 50$.
+
+Alternatively, we can let the command \verb!prime_pi! do all the hard
+work for us. Given an integer $n$---either positive, negative, or
+zero---the command \verb!prime_pi(n)! counts how many primes are less
+than or equal to $n$.
+%
+\begin{lstlisting}
+sage: prime_pi(50)
+15
+sage: prime_pi(100)
+25
+sage: prime_pi(1000)
+168
+sage: prime_pi(10000)
+1229
+sage: prime_pi(0)
+0
+sage: prime_pi(-10)
+0
+\end{lstlisting}
+%
+To study the output of \verb!prime_pi(n)! as the integer \verb!n!
+increases, we could substitute $n = 1, 2, 3, \dots$ into the
+command. Or we could use \verb!plot! together with \verb!prime_pi! to
+visualize how the output of \verb!prime_pi! changes as $n$ increases
+in value. Figure~\ref{fig:number_theory:prime_pi_for_n_leq_100}
+illustrates the change in the values of \verb!prime_pi! as $n$ takes
+on all integer values from $0$ up to and including $100$. Notice that
+when $n = 50$, the output of \verb!prime_pi! is $15$, which confirms
+our computation above. The horizontal axis shows integer values of $n$
+from $0$ to $100$, inclusive, while the vertical axis shows the output
+of the command \verb!prime_pi(n)!. The figure was produced using the
+following code listing:
+%
+\begin{lstlisting}
+sage: P = plot(prime_pi, 0, 100)
+sage: V = line([(50,0), (50,25)], color="red")     # vertical line
+sage: H = plot(15, xmin=0, xmax=100, color="red")  # horizontal line
+sage: P + H + V
+\end{lstlisting}
+%
+\begin{figure}[!htbp]
+\centering
+\includegraphics[scale=0.8]{images/prime-pi-100}
+\caption{Values of \texttt{prime\_pi(n)} for $n = 0, 1, 2, \dots, 100$.}
+\label{fig:number_theory:prime_pi_for_n_leq_100}
+\end{figure}
+%
+And Figure~\ref{fig:number_theory:prime_pi_for_n_leq_1000} shows the
+behavior of \verb!prime_pi! as $n$ increases from $0$ to $1000$. The
+figure was produced using the command:
+%
+\begin{lstlisting}
+sage: plot(prime_pi, 0, 1000)
+\end{lstlisting}
+%
+\begin{figure}[!htbp]
+\centering
+\includegraphics[scale=0.8]{images/prime-pi-1000}
+\caption{Values of \texttt{prime\_pi(n)} for $n = 0, 1, 2, \dots, 1000$.}
+\label{fig:number_theory:prime_pi_for_n_leq_1000}
+\end{figure}
