@@ -468,3 +468,165 @@ sage: euler_phi(50)
 sage: euler_phi(100)
 40
 \end{lstlisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Least common multiple}
+
+Let $a$ and $b$ be integers, both of which are not zero. The
+\emph{least common multiple}~(LCM) of $a$ and $b$ is the smallest
+positive integer which is a multiple of both $a$ and $b$. We write the
+least common multiple of $a$ and $b$ as $\lcm(a, b)$. If $n$ is any
+integer, then $\lcm(n, 0) = 0$ and $\lcm(0, n) = 0$. Where $a$ and $b$
+are both zero, then $\lcm(0,0) = 0$.
+
+\begin{lstlisting}
+sage: lcm(0, 0)
+0
+sage: lcm(13, 0)
+0
+sage: lcm(42, 0)
+0
+sage: N = [1..20]; N
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+sage: L = []
+sage: for i in N:
+...       L.append(lcm(i, 0))
+sage: N
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+sage: L
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+\end{lstlisting}
+
+To compute the LCM of two integers $a$ and $b$, both of which are not
+zero, first compute the GCD of $a$ and $b$. Finally, divide $ab$ by
+$\gcd(a,b)$. This procedure is summarized in the following formula:
+%
+\begin{equation}
+\label{eq:number_theory:formula_for_LCM}
+\lcm(a, b)
+=
+\frac{ab}{\gcd(a, b)}.
+\end{equation}
+%
+Using formula~(\ref{eq:number_theory:formula_for_LCM}), we have:
+%
+\begin{lstlisting}
+sage: lcm(18, 27)
+54
+sage: (18 * 27) / gcd(18, 27)
+54
+sage: lcm(18, 0)
+0
+sage: (18 * 0) / gcd(18, 0)
+0
+sage: lcm(17, 19)
+323
+sage: (17 * 19) / gcd(17, 19)
+323
+sage: 17 * 19
+323
+\end{lstlisting}
+
+Notice the special case of $17$ and $19$. These two integers are
+primes, so their GCD is $\gcd(17, 19) = 1$.
+Using~(\ref{eq:number_theory:formula_for_LCM}), we get
+$\lcm(17, 19) = 17 \times 19$. In general, if $a$ and $b$ are both
+prime integers, then $\gcd(a, b) = 1$ so that
+formula~(\ref{eq:number_theory:formula_for_LCM}) simplifies to
+\[
+\lcm(a, b)
+=
+ab,
+\qquad
+\text{with $a,b$ being primes}.
+\]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Simplifying fractions}
+
+A fraction such as $\frac{12}{8}$ can be simplified as follows. Find
+the GCD of $12$ and $8$, and divide both the numerator and denominator
+by $\gcd(12, 8)$. The GCD of $12$ and $8$ is $\gcd(12, 8) = 4$, so
+%
+\begin{align*}
+\frac{12}{8}
+&=
+\frac{12 \div \gcd(12, 8)} {8 \div \gcd(12, 8)} \\[4pt]
+&=
+\frac{12 \div 4} {8 \div 4} \\[4pt]
+&=
+\frac{3}{2}.
+\end{align*}
+%
+In general, let $a$ and $b$ be integers such that $b \neq 0$. If
+$a = 0$, then $\frac{a}{b} = 0$. If $a \neq 0$, then the fraction
+$\frac{a}{b}$ can be simplified as follows:
+\[
+\frac{a}{b}
+=
+\frac{a \div \gcd(a, b)} {b \div \gcd(a, b)}.
+\]
+
+\begin{lstlisting}
+sage: # simplifying 12 / 8
+sage: 12 / gcd(12, 8)
+3
+sage: 8 / gcd(12, 8)
+2
+sage: 12 / 8
+3/2
+sage: # simplifying 123 / 18
+sage: 123 / gcd(123, 18)
+41
+sage: 18 / gcd(123, 18)
+6
+sage: 123 / 18
+41/6
+\end{lstlisting}
+
+To add or subtract two fractions, we need to first express the
+fractions with a common denominator. Then we can proceed to add or
+subtract the resulting fractors. But first, how do we write both
+fractions with a common denominator? We compute the LCM of both
+denominators. Then multiply each fraction by that LCM divided by the
+corresponding denominator. The procedure is summarized as follows. Let
+$a,b,c,d$ be integers such that both $b$ and $d$ are not zero. Then
+$\frac{a}{b}$ and $\frac{c}{d}$ can be added as follows:
+%
+\begin{equation}
+\label{eq:number_theory:adding_fractions}
+\begin{aligned}
+\frac{a}{b} + \frac{c}{d}
+&=
+\left( \frac{\lcm(a,b)}{b} \times \frac{a}{\lcm(a,b)} \right)
++
+\left( \frac{\lcm(a,b)}{d} \times \frac{c}{\lcm(a,b)} \right) \\[4pt]
+&=
+\frac{(\lcm(a,b) / b) \times a} {\lcm(a,b)}
++
+\frac{(\lcm(a,b) / d) \times c} {\lcm(a,b)}.
+\end{aligned}
+\end{equation}
+
+Using~(\ref{eq:number_theory:adding_fractions}), we add the fractions
+$\frac{7}{5}$ and $\frac{6}{3}$ as follows:
+
+\begin{lstlisting}
+sage: L = lcm(5, 3)
+sage: ((L/5) * 7) + ((L/3) * 6)
+51
+sage: L
+15
+sage: 51 / gcd(51, 15)  # numerator
+17
+sage: 15 / gcd(51, 15)  # denominator
+5
+sage: 51 / 15
+17/5
+sage: (7/5) + (6/3)
+17/5
+\end{lstlisting}
