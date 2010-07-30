@@ -2,16 +2,59 @@
 
 \chapter{Number Theory}
 
-\begin{enumerate}
-\item prime numbers
 
-\item greatest common divisor
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\item least common multiple
+\section{Integers}
 
-\item relative primes
-
-\item prime factorization
-
-\item clock arithmetic~(congruences)
-\end{enumerate}
+An \emph{integer} is a whole number. It can be positive, negative, or
+zero. Examples of integers include $-13$, $-1$, $0$, and $42$. When we
+talk about all the whole numbers, we can use the name \emph{integer}
+to refer to them, or we can list all the whole numbers like so:
+\[
+\dots, -4, -3, -2, -1, 0, 1, 2, 3, 4, \dots
+\]
+But for convenience, we usually write $\ZZ$ to denote the set of all
+integers:
+\[
+\ZZ
+=
+\{\dots, -3, -2, -1, 0, 1, 2, 3, \dots\}.
+\]
+In Sage, the set of all integers is represented as \verb!ZZ! and a
+single integer is represented using \verb!Integer!:
+%
+\begin{lstlisting}
+sage: ZZ
+Integer Ring
+sage: type(ZZ)
+<type 'sage.rings.integer_ring.IntegerRing_class'>
+sage: 1 in ZZ
+True
+sage: -1 in ZZ
+True
+sage: 3.1415 in ZZ
+False
+sage: type(3)
+<type 'sage.rings.integer.Integer'>
+sage: Integer
+<type 'sage.rings.integer.Integer'>
+\end{lstlisting}
+%
+Notice that in the above code listing, we used \verb!in! to test
+whether or not a number is an integer. The command
+%
+\begin{lstlisting}
+sage: 1 in ZZ
+True
+\end{lstlisting}
+%
+gives the result \verb!True! because $1$ is an integer. On the other
+hand, the command
+%
+\begin{lstlisting}
+sage: 3.1415 in ZZ
+False
+\end{lstlisting}
+%
+gives \verb!False! because $3.1415$ is not an integer.
