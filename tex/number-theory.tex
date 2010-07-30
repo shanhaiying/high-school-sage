@@ -213,3 +213,47 @@ sage: plot(prime_pi, 0, 1000)
 \caption{Values of \texttt{prime\_pi(n)} for $n = 0, 1, 2, \dots, 1000$.}
 \label{fig:number_theory:prime_pi_for_n_leq_1000}
 \end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Divisibility}
+
+For any two integers $a$ and $n$, we say that $a$ \emph{divides} $n$
+if $a$ is a factor of $n$. That is, if we can find an integer $b$ such
+that $n = ab$, then $a$ is a factor of $n$. In that case, $b$ is also
+a factor of $n$. The integer $2$ divides, or is a factor of, $4$
+because $4 = 2 \times 2$. Similarly, both $2$ and $3$ are factors of,
+or both divide, $6$ because $6 = 2 \times 3$.
+
+Does every positive integer have a factor? Yes. In fact, if $n > 1$ is
+an integer, then $n$ has a factor that is greater than $1$. We can
+make a stronger claim: Every integer $n > 1$ has a prime factor. A
+factorization, or prime factorization, of $n$ is product containing
+all the primes that divide $n$. Examples of prime factorizations
+include $4 = 2 \times 2$ and $6 = 2 \times 3$. However, $8 = 2 \times 4$
+is not a prime factorization of $8$ because the product $2 \times 4$
+has $4$, which is not prime.
+
+To find all the positive divisors of an integer, use the command
+\verb!divisors!.
+%
+\begin{lstlisting}
+sage: divisors(4)
+[1, 2, 4]
+sage: divisors(6)
+[1, 2, 3, 6]
+sage: divisors(8)
+[1, 2, 4, 8]
+\end{lstlisting}
+%
+To write $n$ as a product of primes, use \verb!factor!.
+
+\begin{lstlisting}
+sage: factor(4)
+2^2
+sage: factor(6)
+2 * 3
+sage: factor(8)
+2^3
+\end{lstlisting}
