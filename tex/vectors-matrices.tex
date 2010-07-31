@@ -7,6 +7,9 @@
 
 \section{Scalars and vectors}
 \label{sec:scalars_vectors}
+\index{scalar}
+\index{two-dimensional vectors}
+\index{vector}
 
 The path of a car travelling from location $A$ to location $B$ is
 characterized by two quantities or \emph{scalars}\index{scalars}: a
@@ -39,12 +42,13 @@ to $B$). Both of these two scalars are summarized by a
 In the $x$-$y$ plane, we can visualize a vector as an arrow from point
 $A$ to point $B$~(see
 Figure~\ref{fig:vectors_matrices:plane_vectors}). The starting point
-$A$ of the vector is called the \emph{tail}\index{vectors!tail} and
-the terminal point $B$ is the \emph{head}.\index{vectors!head} Two
-vectors are \emph{equivalent}\index{vectors!equivalent} if they have
-the same magnitude and direction. The vectors $\vecu$, $\vecv$, and
-$\vecw$ in Figure~\ref{fig:vectors_matrices:plane_vectors} are thus
-all equivalent to each other.
+$A$ of the vector is called the
+\emph{tail}\index{vector!tail}\index{tail} and the terminal point $B$
+is the \emph{head}\index{vector!head}\index{head}. Two vectors are
+\emph{equivalent}\index{vector!equivalent} if they have the same
+magnitude and direction. The vectors $\vecu$, $\vecv$, and $\vecw$ in
+Figure~\ref{fig:vectors_matrices:plane_vectors} are thus all
+equivalent to each other.
 
 To analyze vectors using algebra, we can think of a vector $\vecu$
 as starting from the origin of the $x$-$y$ plane and having
@@ -67,11 +71,11 @@ for $\vecu$.
 \label{fig:specify_vector_head_coordinate}
 \end{figure}
 
-In case the tail of $\vecu$ is not the origin, we let $(x_1, y_1)$
-be the coordinate of the tail and denote the coordinate of the head by
-$(x_2, y_2)$. By subtracting coordinatewise, we obtain an equivalent
-vector $\vecv$ that emanates from the origin of the $x$-$y$
-plane. The coordinate of $\vecv$ is
+In case the tail\index{vector!tail}\index{tail} of $\vecu$ is not the
+origin, we let $(x_1, y_1)$ be the coordinate of the tail and denote
+the coordinate of the head by $(x_2, y_2)$. By subtracting
+coordinatewise, we obtain an equivalent vector $\vecv$ that emanates
+from the origin of the $x$-$y$ plane. The coordinate of $\vecv$ is
 \[
 (x_2, y_2) - (x_1, y_1)
 =
@@ -96,7 +100,7 @@ Equation~(\ref{eq:component_form_vector}) is called the
 \emph{component form}\index{component form} of a vector, with $u_1$
 and $u_2$ being the individual components. The vector
 $\veczero = \langle 0, 0 \rangle$ is called the zero
-vector.\index{zero vector}
+vector\index{zero vector}.
 
 \begin{figure}[!htpb]
 \centering
@@ -173,7 +177,8 @@ sage: v.norm()
 5.000...000
 \end{lstlisting}
 
-The slope of the line segment from $(-2,-1)$ to $(1,3)$ is
+The slope\index{slope}\index{gradient} of the line segment from
+$(-2,-1)$ to $(1,3)$ is
 \[
 \frac{3 - (-1)} {1 - (-2)}
 =
@@ -200,11 +205,12 @@ sage: QQ((5.5 - 1.5) / (4.5 - 1.5))
 Therefore, $\vecu$ and $\vecv$ are equivalent vectors.
 \end{proof}
 
-We denote the length of a vector as follows. Let $\vecu$ be a
-vector whose starting point is $P = (x_1, y_1)$ and whose terminal
-point is $Q = (x_2, y_2)$. Then the length or magnitude of $\vecu$
-is denoted by $\vecvertl \vecu \vecvertr$ and given
-by the equation
+We denote the length\index{vector!length}\index{length} of a vector as
+follows. Let $\vecu$ be a vector whose starting point is
+$P = (x_1, y_1)$ and whose terminal point is $Q = (x_2, y_2)$. Then
+the \emph{length} or
+\emph{magnitude}\index{vector!magnitude}\index{magnitude} of $\vecu$
+is denoted by $\vecvertl \vecu \vecvertr$ and given by the equation
 %
 \begin{equation}
 \label{eq:vectors_matrices:magnitude_two_dimensional_vector}
@@ -221,8 +227,7 @@ by the equation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Add, subtract, and multiply vectors}
-\index{vectors!arithmetic}
-%% Relate vectors with complex numbers.
+\index{vector!arithmetic}
 
 The left-hand side of Figure~\ref{fig:vectors_matrices:vector_sum}
 illustrates the path of an object. Initially travelling in the
@@ -266,23 +271,24 @@ addition.
 
 \begin{definition}
 \label{def:vectors_matrices:vector_operations}
+\index{vector!arithmetic}
 Let $\vecu = \langle u_1, u_2 \rangle$ and
 $\vecv = \langle v_1, v_2 \rangle$ be vectors and suppose
 $c$ is a scalar. Then we have the following operations on vectors:
 \begin{enumerate}
-\item The \emph{vector sum} of $\vecu$ and
+\item The \emph{vector sum}\index{sum} of $\vecu$ and
   $\vecv$ is $\vecu + \vecv = \langle u_1 + v_1,\; u_2 + v_2 \rangle$.
 
-\item The \emph{negative} of $\vecu$ is
+\item The \emph{negative}\index{negative} of $\vecu$ is
   $-\vecu = \langle -u_1, -u_2 \rangle$.
 
-\item The \emph{vector difference} of $\vecu$ and
+\item The \emph{vector difference}\index{difference} of $\vecu$ and
   $\vecv$ is $\vecu - \vecv =
   \langle u_1, u_2 \rangle - \langle v_1, v_2 \rangle = \langle u_1 -
   v_1,\; u_2 - v_2 \rangle$.
 
-\item The \emph{scalar multiple} of $c$ and $\vecu$ is
-  $c\vecu = \langle c u_1, c u_2 \rangle$.
+\item The \emph{scalar multiple}\index{scalar multiple} of $c$ and
+  $\vecu$ is $c\vecu = \langle c u_1, c u_2 \rangle$.
 \end{enumerate}
 \end{definition}
 
@@ -310,15 +316,16 @@ Figure~\ref{fig:scalar_multiply_negative}.
 \label{fig:scalar_multiply_negative}
 \end{figure}
 
-Using the parallelogram rule for vector addition, we can similarly
-illustrate vector difference. The left-hand side of
-Figure~\ref{fig:vectors_matrices:vector_difference_parallelogram_triangle} shows the
-parallelogram rule for vector subtraction, while the right-hand side shows
-the triangle rule for vector subtraction. Thus to determine the
-difference of two vectors $\vecu$ and $\vecv$, we first align the
-vectors so that their initial points coincide. Then the difference
-$\vecu - \vecv$ is the vector that starts from the head of
-$\vecv$ and ends at the terminal point of $\vecu$.
+Using the parallelogram rule\index{parallelogram rule} for vector
+addition, we can similarly illustrate vector difference. The left-hand
+side of
+Figure~\ref{fig:vectors_matrices:vector_difference_parallelogram_triangle}
+shows the parallelogram rule for vector subtraction, while the
+right-hand side shows the triangle rule for vector subtraction. Thus
+to determine the difference of two vectors $\vecu$ and $\vecv$, we
+first align the vectors so that their initial points coincide. Then
+the difference $\vecu - \vecv$ is the vector that starts from the head
+of $\vecv$ and ends at the terminal point of $\vecu$.
 
 \begin{figure}[!htpb]
 \centering
@@ -366,7 +373,8 @@ vector is $\vecx = \frac{4}{5}\vecv - \frac{7}{5}\vecu$.
 \end{proof}
 
 Any nonzero vector $\vecv$ can be transformed into a vector $\vecu$ of
-magnitude $1$. The equation to effect this transformation is
+magnitude $1$\index{unit vector}. The equation to effect this
+transformation is
 %
 \begin{equation}
 \label{eq:vectors_matrices:two_dimensional_unit_vector}
@@ -381,8 +389,11 @@ magnitude $1$. The equation to effect this transformation is
 The process of using
 equation~(\ref{eq:vectors_matrices:two_dimensional_unit_vector}) to
 transform a nonzero vector into a vector of magnitude $1$ is called
-\emph{normalizing}\index{vectors!normalization} a vector. For example,
-given the vector $\vecu = \langle 1, 2 \rangle$, we can use
+\emph{normalizing}
+\index{vector!normalization}
+\index{normalization}
+\index{normalized form} a vector. For example, given the vector
+$\vecu = \langle 1, 2 \rangle$, we can use
 equation~(\ref{eq:vectors_matrices:two_dimensional_unit_vector}) to
 find the normalized form of $\vecu$. Since
 $\vecvertl \vecu \vecvertr = \sqrt{5}$ by
@@ -409,8 +420,8 @@ sage: u / u.norm()
 \subsection{Applications to geometry}
 \label{subsec:2D_vectors_apply_geometry}
 
-A line in the $x$-$y$ plane is usually described by the linear
-equation
+A line\index{line} in the $x$-$y$ plane is usually described by the
+linear equation
 \[
 y = mx + c
 \]
@@ -462,22 +473,24 @@ Two nonzero vectors $\vecu$ and $\vecv$ are said to be
 expressed as a linear combination that equals the zero vector, i.e. we
 can find two nonzero real numbers $m,n$ such that
 $m\vecu + n\vecv = \veczero$. From this definition, it follows that
-two vectors are parallel if and only if they are linearly
-dependent. In other words, if two vectors are parallel then they are
-linearly dependent. The converse is also true: if two vectors are
-linearly dependent, then they are parallel.
+two vectors are parallel\index{parallel vectors} if and only if they
+are linearly dependent. In other words, if two vectors are parallel
+then they are linearly dependent. The converse is also true: if two
+vectors are linearly dependent, then they are parallel.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Three-dimensional vectors}
-\index{vectors!three-dimensional}
+\index{two-dimensional vectors}
+\index{vector!three-dimensional}
 
 Just as vectors in the plane are described by two components, so
 vectors in three-dimensional space are described by three components,
 as shown in Figure~\ref{fig:vectors_matrices:3D_vector}. If $\vecu$ is
 a vector whose tail is the origin $(0,0,0)$ and whose head is
-$(u_1, u_2, u_3)$, then the \emph{component form} of $\vecu$ is
+$(u_1, u_2, u_3)$, then the
+\emph{component form}\index{component form} of $\vecu$ is
 $\vecu = \langle u_1, u_2, u_3 \rangle$. Moving from two dimensions to
 three does not change many of the vector results presented earlier in
 this chapter. In fact, the magnitude of $\vecu$ is similarly defined as
@@ -489,7 +502,8 @@ this chapter. In fact, the magnitude of $\vecu$ is similarly defined as
 \sqrt{u_1^2 + u_2^2 + u_3^2}
 \end{equation}
 %
-and if $\vecu \neq \veczero$ then its \emph{normalized form} is
+and if $\vecu \neq \veczero$ then its
+\emph{normalized form}\index{normalized form} is
 %
 \begin{equation}
 \label{eq:normalize_vector_three_dimensions}
@@ -619,8 +633,9 @@ scalar. We now consider the case of multiplying two vectors.
 \label{def:vectors_matrices:vector_dot_product}
 Let $\vecu = \langle u_1, u_2, u_3 \rangle$ and
 $\vecv = \langle v_1, v_2, v_3 \rangle$ be
-three-dimensional vectors. Then the vector \emph{dot product}
-of $\vecu$ and $\vecv$ is defined as
+three-dimensional vectors. Then the vector
+\emph{dot product}\index{dot product} of $\vecu$ and $\vecv$ is
+defined as
 \[
 \vecu \cdot \vecv
 =
@@ -628,14 +643,14 @@ u_1 v_1 + u_2 v_2 + u_3 v_3.
 \]
 \end{definition}
 
-The vector dot product is also called the scalar or inner
-product\index{scalar product}\index{inner product}. Unlike scalar
-multiplication of a scalar $c$ and a vector $\vecu$, which results
-in another vector $c\vecu$, the dot product of two vectors
-$\vecu$ and $\vecv$ is a scalar. A similar definition holds for
-two-dimensional vectors. Thus to find the dot product of two vectors
-both of which are in two- or three-dimensional space, we multiply the
-corresponding components and add up the results.
+The vector dot product is also called the
+scalar\index{scalar product} or inner\index{inner product}
+product. Unlike scalar multiplication of a scalar $c$ and a vector
+$\vecu$, which results in another vector $c\vecu$, the dot product of
+two vectors $\vecu$ and $\vecv$ is a scalar. A similar definition
+holds for two-dimensional vectors. Thus to find the dot product of two
+vectors both of which are in two- or three-dimensional space, we
+multiply the corresponding components and add up the results.
 
 \begin{lstlisting}
 sage: u = vector([3, 5, 7])
@@ -654,10 +669,10 @@ sage: u * v
 -34
 \end{lstlisting}
 
-We can also find the dot product of two vectors in terms of the angle
-between them. If $\theta$ is the angle between two vectors $\vecu$
-and $\vecv$ in two- or three-dimensional space, then their dot
-product obeys the following geometric interpretation:
+We can also find the dot product of two vectors in terms of the
+angle\index{angle} between them. If $\theta$ is the angle between two
+vectors $\vecu$ and $\vecv$ in two- or three-dimensional space, then
+their dot product obeys the following geometric interpretation:
 \index{dot product!geometric interpretation}
 %
 \begin{equation}
@@ -731,13 +746,14 @@ arccos(45/(sqrt(59)*sqrt(93)))
 which is the same as what we have above.
 \end{proof}
 
-From plane geometry, we know that two lines are perpendicular if the
-angle $\theta$ between them is $90^{\circ}$ or $\theta = \pi / 2$
-radians. Now $\cos (\pi / 2) = 0$ and using
-equation~(\ref{eq:vectors_matrices:geometric_interpretation_dot_product}), we see that
-two non-zero vectors are perpendicular (also called
-\emph{orthogonal})\index{vectors!orthogonal} if and only if their dot
-product is zero.
+From plane geometry, we know that two lines are
+perpendicular\index{perpendicular lines} if the angle $\theta$ between
+them is $90^{\circ}$ or $\theta = \pi / 2$ radians. Now $\cos (\pi /
+2) = 0$ and using
+equation~(\ref{eq:vectors_matrices:geometric_interpretation_dot_product}),
+we see that two non-zero vectors are perpendicular (also called
+\emph{orthogonal})\index{vector!orthogonal}\index{orthogonal vectors}
+if and only if their dot product is zero.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -759,7 +775,7 @@ Figure~\ref{fig:vectors_matrices:_parallel_perpendicular_vectors} shows
 the case where the angle $\theta$ between $\vecu$ and $\vecv$ is
 $0 < \theta < \pi/2$; the right-hand side of the figure shows the case
 where $\pi/2 < \theta < \pi$. We can think of
-$\vecu_{\vecpar}$ as being the shadow\index{vectors!shadow} of
+$\vecu_{\vecpar}$ as being the shadow\index{vector!shadow} of
 $\vecu$ cast on the line in the direction of $\vecv$. Then the
 magnitude of $\vecu_{\vecpar}$ is the length of the shadow. By
 the triangle rule for vector difference~(see
@@ -812,8 +828,8 @@ is a scalar multiple of the other, that is
 c\vecv
 \end{equation}
 %
-for some scalar $c \neq 0$. Using the parallelogram rule for vector
-addition, we have
+for some scalar $c \neq 0$. Using the parallelogram
+rule\index{parallelogram rule} for vector addition, we have
 $\vecu = \vecu_{\vecpar} + \vecu_{\vecper}$. Then the dot product of
 $\vecu$ and $\vecv$ is
 %
@@ -861,12 +877,13 @@ equation~(\ref{eq:vectors_matrices:u_par_parallel_v}) results in
 \label{eq:vectors_matrices:u_per_scalar_projection}
 \end{align}
 %
-The upshot is that given two non-zero vectors $\vecu$ and
+The upshot is that given two nonzero vectors $\vecu$ and
 $\vecv$, equations~(\ref{eq:vectors_matrices:u_par_vector_projection})
 and~(\ref{eq:vectors_matrices:u_per_scalar_projection}) allow us to
 resolve $\vecu$ into two component vectors $\vecu_{\vecpar}$ and
-$\vecu_{\vecper}$ that are, respectively, parallel and
-orthogonal to $\vecv$.
+$\vecu_{\vecper}$ that are, respectively,
+parallel\index{parallel vectors} and
+orthogonal\index{orthogonal vectors} to $\vecv$.
 
 \begin{example}
 \index{vectors!projection}
@@ -1314,8 +1331,9 @@ the cross product is not defined for two-dimensional vectors.
 Let $\vecu = \langle u_1, u_2, u_3 \rangle$ and
 $\vecv = \langle v_1, v_2, v_3 \rangle$ be three-dimensional vectors,
 and let $\veci, \vecj, \veck$ be the standard unit vectors in
-three-dimensional space. Then the \emph{cross product} of $\vecu$ and
-$\vecv$ is defined as the vector
+three-dimensional space. Then the
+\emph{cross product}\index{cross product} of $\vecu$ and $\vecv$ is
+defined as the vector
 \[
 \vecu \times \vecv
 =
@@ -1374,10 +1392,10 @@ $\vecw$ be three-dimensional vectors and suppose $c$ is a scalar. Then
 the cross product has the following properties:
 %
 \begin{enumerate}
-\item Anti-commutative:
+\item Anticommutative\index{anticommutative}:
   $\vecu \times \vecv = - \vecv \times \vecu$.
 
-\item Distributive:
+\item Distributive\index{distributive}:
   $\vecu \times (\vecv + \vecw)
   =
   \vecu \times \vecv + \vecu \times \vecw$.
@@ -1387,20 +1405,20 @@ the cross product has the following properties:
   =
   \vecu \times \vecw + \vecv \times \vecw$.
 
-\item Associative scalar multiplication:
+\item Associative scalar multiplication\index{scalar multiplication}:
   $c (\vecu \times \vecv)
   =
   (c\vecu) \times \vecv
   = \vecu \times (c\vecv)$.
 
-\item Zero element:
+\item Zero element\index{zero element}:
   $\veczero \times \vecu
   =
   \veczero
   =
   \vecu \times \veczero$.
 
-\item Self-inverse: $\vecu \times \vecu = \veczero$.
+\item Self-inverse\index{self-inverse}: $\vecu \times \vecu = \veczero$.
 \end{enumerate}
 
 If $\vecu = \langle u_1, u_2, u_3 \rangle$ and
@@ -1459,10 +1477,10 @@ v_3 ( u_1 v_2 - u_2 v_1 ) \\
 \end{align*}
 %
 From section~\ref{sec:dot_product}, we know that two nonzero vectors
-are perpendicular if and only if their dot product is zero. The last
-two equations show that $\vecu$ and $\vecv$ are both perpendicular to
-$\vecu \times \vecv$. In other words, we have proved the following
-result.
+are perpendicular\index{perpendicular vectors} if and only if their
+dot product is zero. The last two equations show that $\vecu$ and
+$\vecv$ are both perpendicular to $\vecu \times \vecv$. In other
+words, we have proved the following result.
 
 \begin{theorem}
 \label{thm:vectors_matrices:u_v_parallel_u_dot_v}
