@@ -216,3 +216,253 @@ by the equation
 \sqrt{v_1^2 + v_2^2}.
 \end{aligned}
 \end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Add, subtract, and multiply vectors}
+\index{vectors!arithmetic}
+%% Relate vectors with complex numbers.
+
+The left-hand side of Figure~\ref{fig:vectors_matrices:vector_sum}
+illustrates the path of an object. Initially travelling in the
+direction of vector $\vecu$, the object then changes its direction to
+move in the direction of $\vecv$. The total displacement of the object
+is represented as the vector $\vecu + \vecv = \vecw$. Furthermore, we
+could first go in the direction of $\vecv$ and then in that of $\vecu$,
+and hence obtain the same displacement $\vecv + \vecu = \vecw$, as
+shown on the right-hand side of
+Figure~\ref{fig:vectors_matrices:vector_sum}. This ``adding'' of
+vectors is just one of many basic operations that can be performed on
+vectors. In fact, the ``adding'' rule illustrated in
+Figure~\ref{fig:vectors_matrices:vector_sum} is called the
+\emph{parallelogram rule}\index{parallelogram rule} for vector
+addition.
+
+\begin{figure}[!htpb]
+\centering
+\begin{tikzpicture}
+% left set of vectors
+\node (start1) at (0,0) [circle,fill=blue,inner sep=1.5pt]{};
+\node (middle1) at (3,0.1) [circle,inner sep=0.5pt]{};
+\node (finish1) at (3.4,1.6) [circle,fill=blue,inner sep=1.5pt]{};
+\draw[->,>=stealth,very thick] (start1) node[below left]{start}  -- node[below]{$\vecu$} (middle1);
+\draw[->,>=stealth,very thick] (middle1) -- node[right]{$\vecv$} (finish1) node[above right]{finish};
+\draw[->,>=stealth,very thick] (start1) -- node[above]{$\vecw$} (finish1);
+% right set of vectors
+\node (start2) at (6,0) [circle,fill=blue,inner sep=1.5pt]{};
+\node (lowerMiddle) at (9,0.1) [circle,inner sep=0.5pt]{};
+\node (upperMiddle) at (6.4,1.5) [circle,inner sep=0.5pt]{};
+\node (finish2) at (9.4,1.6) [circle,fill=blue,inner sep=1.5pt]{};
+\draw[->,>=stealth,very thick] (start2) node[below left]{start} -- node[below]{$\vecu$} (lowerMiddle);
+\draw[->,>=stealth,very thick] (lowerMiddle) -- node[right]{$\vecv$} (finish2) node[above right]{finish};
+\draw[->,>=stealth,shorten >=3pt,very thick] (start2) -- node[above]{$\vecw$} (finish2);
+\draw[->,>=stealth,very thick,dash pattern=on 4pt off 4pt] (start2) -- node[left]{$\vecv$} (upperMiddle);
+\draw[->,>=stealth,very thick,dash pattern=on 4pt off 4pt] (upperMiddle) -- node[above]{$\vecu$} (finish2);
+\end{tikzpicture}
+\caption{The vector sum $\vecu + \vecv = \vecw = \vecv + \vecu$.}
+\label{fig:vectors_matrices:vector_sum}
+\end{figure}
+
+\begin{definition}
+\label{def:vectors_matrices:vector_operations}
+Let $\vecu = \langle u_1, u_2 \rangle$ and
+$\vecv = \langle v_1, v_2 \rangle$ be vectors and suppose
+$c$ is a scalar. Then we have the following operations on vectors:
+\begin{enumerate}
+\item The \emph{vector sum} of $\vecu$ and
+  $\vecv$ is $\vecu + \vecv = \langle u_1 + v_1,\; u_2 + v_2 \rangle$.
+
+\item The \emph{negative} of $\vecu$ is
+  $-\vecu = \langle -u_1, -u_2 \rangle$.
+
+\item The \emph{vector difference} of $\vecu$ and
+  $\vecv$ is $\vecu - \vecv =
+  \langle u_1, u_2 \rangle - \langle v_1, v_2 \rangle = \langle u_1 -
+  v_1,\; u_2 - v_2 \rangle$.
+
+\item The \emph{scalar multiple} of $c$ and $\vecu$ is
+  $c\vecu = \langle c u_1, c u_2 \rangle$.
+\end{enumerate}
+\end{definition}
+
+The negative of a vector $\vecu$ is a vector that has the same
+length as $\vecu$, but goes in the opposite direction. One
+exception is the zero vector $\veczero$, whose negative is itself
+because $-\veczero = -\langle 0,0 \rangle = \langle -0, -0 \rangle =
+\langle 0,0 \rangle = \veczero$. More generally, scalar
+multiplication has the effect of scaling a vector. This may result in
+expanding the vector, contracting it, producing the negative of the
+vector, or expanding/contracting the negative of the vector. These
+various possibilities are shown in
+Figure~\ref{fig:scalar_multiply_negative}.
+
+\begin{figure}[!htpb]
+\centering
+\begin{tikzpicture}
+\draw[->,>=stealth,very thick] (0,0) -- (1,1) node[above]{$\vecu$};
+\draw[<-,>=stealth,very thick] (1,0) -- (2,1) node[above]{$-\vecu$};
+\draw[->,>=stealth,very thick] (2,0) -- (2.5,0.5) node[above right]{$\frac{1}{2}\vecu$};
+\draw[->,>=stealth,very thick] (3,0) -- (5,2) node[above]{$2\vecu$};
+\draw[<-,>=stealth,very thick] (4,0) -- (5.5,1.5) node[above right]{$-\frac{3}{4}\vecu$};
+\end{tikzpicture}
+\caption{Scalar multiplication and negative of a vector.}
+\label{fig:scalar_multiply_negative}
+\end{figure}
+
+Using the parallelogram rule for vector addition, we can similarly
+illustrate vector difference. The left-hand side of
+Figure~\ref{fig:vectors_matrices:vector_difference_parallelogram_triangle} shows the
+parallelogram rule for vector subtraction, while the right-hand side shows
+the triangle rule for vector subtraction. Thus to determine the
+difference of two vectors $\vecu$ and $\vecv$, we first align the
+vectors so that their initial points coincide. Then the difference
+$\vecu - \vecv$ is the vector that starts from the head of
+$\vecv$ and ends at the terminal point of $\vecu$.
+
+\begin{figure}[!htpb]
+\centering
+\begin{tikzpicture}
+% left-hand figure: vector difference by parallelogram rule
+\node (origin) at (0,0) [circle,fill=blue,inner sep=1.5pt]{};
+\node (destin) at (-1.7,2) [circle,fill=blue,inner sep=1.5pt]{};
+\draw[->,>=stealth,very thick] (origin) -- node[below]{$\vecv$} (2.5,0);
+\draw[->,>=stealth,very thick] (origin) -- node[below]{$-\vecv$} (-2.5,0);
+\draw[->,>=stealth,very thick] (origin) -- node[right]{$\vecu$} (0.8,2);
+\draw[->,>=stealth,very thick,dash pattern=on 4pt off 4pt] (-2.5,0) -- node[left]{$\vecu$} (destin);
+\draw[->,>=stealth,very thick,dash pattern=on 4pt off 4pt] (0.5,2) -- node[above]{$-\vecv$} (destin);
+\draw[->,>=stealth,very thick] (origin) -- node[right]{$\vecu - \vecv$} (destin);
+% right-hand figure: vector difference
+\draw[->,>=stealth,very thick] (4.5,0) -- node[left]{$\vecu$} (5.3,2);
+\draw[->,>=stealth,very thick] (4.5,0) -- node[below]{$\vecv$} (7,0);
+\draw[->,>=stealth,very thick] (7,0) -- node[right]{$\vecu - \vecv$} (5.3,2);
+\end{tikzpicture}
+\caption{Vector difference by the parallelogram rule~(left) and by the
+triangle rule~(right).}
+\label{fig:vectors_matrices:vector_difference_parallelogram_triangle}
+\end{figure}
+
+Vector operations share many of the familiar properties of operations
+on real numbers. Given two real numbers, for example, it does not
+matter in which order we add
+them. Problem~\ref{prob:vectors_matrices:field_laws_for_vectors} lists
+a number of vector rules that are similar to those obeyed by real numbers.
+
+\begin{example}
+Using vector rules from
+problem~\ref{prob:vectors_matrices:field_laws_for_vectors}, find a
+vector $\vecx$ such that $5\vecx + 7\vecu = 4\vecv$.
+\end{example}
+
+\begin{proof}[Solution]
+First, subtract $7\vecu$ from both sides of the equal sign to get
+$5\vecx + (7\vecu - 7\vecu) = 4\vecv - 7\vecu$, which can be
+simplified to $5\vecx = 4\vecv - 7\vecu$. Now divide both sides of
+the last equation by $5$ and we have
+$\frac{1}{5} (5\vecx) = \frac{1}{5} (4\vecv - 7\vecu)$. Simplify the
+last equation to
+$\vecx = \frac{1}{5} (4\vecv) + \frac{1}{5}(-7\vecu)$. So the required
+vector is $\vecx = \frac{4}{5}\vecv - \frac{7}{5}\vecu$.
+\end{proof}
+
+Any nonzero vector $\vecv$ can be transformed into a vector $\vecu$ of
+magnitude $1$. The equation to effect this transformation is
+%
+\begin{equation}
+\label{eq:vectors_matrices:two_dimensional_unit_vector}
+\vecu
+=
+\frac {\vecv} {\vecvertl \vecv \vecvertr}
+=
+\vecv
+\frac {1} {\vecvertl \vecv \vecvertr}.
+\end{equation}
+%
+The process of using
+equation~(\ref{eq:vectors_matrices:two_dimensional_unit_vector}) to
+transform a nonzero vector into a vector of magnitude $1$ is called
+\emph{normalizing}\index{vectors!normalization} a vector. For example,
+given the vector $\vecu = \langle 1, 2 \rangle$, we can use
+equation~(\ref{eq:vectors_matrices:two_dimensional_unit_vector}) to
+find the normalized form of $\vecu$. Since
+$\vecvertl \vecu \vecvertr = \sqrt{5}$ by
+equation~(\ref{eq:vectors_matrices:magnitude_two_dimensional_vector}),
+so $\vecu$ is normalized as
+%
+\begin{align*}
+\frac {\vecu} {\vecvertl \vecu \vecvertr}
+&=
+\frac{1}{\sqrt{5}} \langle 1, 2 \rangle \\[4pt]
+&=
+\frac{\sqrt{5}}{5} \langle 1, 2 \rangle.
+\end{align*}
+
+\begin{lstlisting}
+sage: u = vector([1, 2])
+sage: u / u.norm()
+(1/5*sqrt(5), 2/5*sqrt(5))
+\end{lstlisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Applications to geometry}
+\label{subsec:2D_vectors_apply_geometry}
+
+A line in the $x$-$y$ plane is usually described by the linear
+equation
+\[
+y = mx + c
+\]
+where $m \neq 0$ is the slope of the line and $c$ is a constant. The
+same line can be represented in \emph{vector form}\index{vector form}
+as
+%
+\begin{equation}
+\label{eq:vector_form_line}
+\langle x,\, mx + c \rangle
+=
+\langle 0, c \rangle + x \langle 1, m \rangle.
+\end{equation}
+%
+The vector $\langle 0, c \rangle$ points to the line, while the vector
+$\langle 1, m \rangle$ is in the same direction as the line.
+
+\begin{example}
+Express the line $2x + 3y = 4$ in vector form.
+\end{example}
+
+\begin{proof}[Solution]
+Solving the equation $2x + 3y = 4$ for $y$ to get
+\[
+y = \frac{4}{3} - \frac{2}{3} x.
+\]
+Using equation~(\ref{eq:vector_form_line}), we have
+\[
+\langle 0,\, 4/3 \rangle
++ x \langle 1,\, -2/3 \rangle
+\]
+which is a representation of the line $2x + 3y = 4$ in vector form.
+\end{proof}
+
+In general, a line $L$ has many different vector representations. If
+$(u_1, u_2)$ is a point on $L$, then $\vecu = \langle u_1, u_2
+\rangle$ is a vector pointing to $L$. Furthermore, let $\vecv =
+\langle v_1, v_2 \rangle$ be a vector in the same direction as
+$L$. Then the line $L$ can be represented in vector form as
+\[
+\langle x, y \rangle
+=
+\vecu + t \vecv
+\]
+with $t$ being a parameter.
+
+Two nonzero vectors $\vecu$ and $\vecv$ are said to be
+\emph{linearly dependent}\index{linearly dependent} if they can be
+expressed as a linear combination that equals the zero vector, i.e. we
+can find two nonzero real numbers $m,n$ such that
+$m\vecu + n\vecv = \veczero$. From this definition, it follows that
+two vectors are parallel if and only if they are linearly
+dependent. In other words, if two vectors are parallel then they are
+linearly dependent. The converse is also true: if two vectors are
+linearly dependent, then they are parallel.
