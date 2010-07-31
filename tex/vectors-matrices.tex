@@ -1298,3 +1298,234 @@ sage: B = matrix([[2,-1,5], [7,6,9], [-1,3,4]]); B
 sage: B.det()
 166
 \end{lstlisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The cross product}
+\index{cross product}
+
+We have seen that scalar multiplication produces a vector, while the
+dot product results in a scalar. This section presents another
+operation on vectors, called the cross product, that produces
+a vector as a result. Unlike scalar multiplication and dot product,
+the cross product is not defined for two-dimensional vectors.
+
+Let $\vecu = \langle u_1, u_2, u_3 \rangle$ and
+$\vecv = \langle v_1, v_2, v_3 \rangle$ be three-dimensional vectors,
+and let $\veci, \vecj, \veck$ be the standard unit vectors in
+three-dimensional space. Then the \emph{cross product} of $\vecu$ and
+$\vecv$ is defined as the vector
+\[
+\vecu \times \vecv
+=
+\begin{vmatrix}
+u_2 & u_3 \\
+v_2 & v_3
+\end{vmatrix}
+\veci
+-
+\begin{vmatrix}
+u_1 & u_3 \\
+v_1 & v_3
+\end{vmatrix}
+\vecj
++
+\begin{vmatrix}
+u_1 & u_2 \\
+v_1 & v_2
+\end{vmatrix}
+\veck.
+\]
+Here is a mnemonic trick to remember the definition of the cross
+product:
+%
+\begin{equation}
+\label{eq:vectors_matrices:mnemonic_cross_product}
+\vecu \times \vecv
+=
+\begin{vmatrix}
+\veci & \vecj & \veck \\
+u_1 & u_2 & u_3 \\
+v_1 & v_2 & v_3
+\end{vmatrix}.
+\end{equation}
+%
+Expand this determinant using the
+formula~(\ref{eq:vectors_matrices:3_by_3_determinant}). The entries of
+matrices we work with should be numbers, not vectors. Strictly
+speaking, it does not make sense to have the standard unit vectors
+$\veci$, $\vecj$, and $\veck$ as matrix entries. We stress that
+equation~(\ref{eq:vectors_matrices:mnemonic_cross_product}) is just a
+trick to remember the definition of the cross product.
+
+\begin{lstlisting}
+sage: var("u_1, u_2, u_3");
+sage: var("v_1, v_2, v_3");
+sage: u = vector([u_1, u_2, u_3])
+sage: v = vector([v_1, v_2, v_3])
+sage: u.cross_product(v)
+(u_2*v_3 - u_3*v_2, -u_1*v_3 + u_3*v_1, u_1*v_2 - u_2*v_1)
+\end{lstlisting}
+
+Like the dot product, the cross product also shares a number of
+arithmetic properties of ordinary numbers. Let $\vecu$, $\vecv$, and
+$\vecw$ be three-dimensional vectors and suppose $c$ is a scalar. Then
+the cross product has the following properties:
+%
+\begin{enumerate}
+\item Anti-commutative:
+  $\vecu \times \vecv = - \vecv \times \vecu$.
+
+\item Distributive:
+  $\vecu \times (\vecv + \vecw)
+  =
+  \vecu \times \vecv + \vecu \times \vecw$.
+
+\item Distributive:
+  $(\vecu + \vecv) \times \vecw
+  =
+  \vecu \times \vecw + \vecv \times \vecw$.
+
+\item Associative scalar multiplication:
+  $c (\vecu \times \vecv)
+  =
+  (c\vecu) \times \vecv
+  = \vecu \times (c\vecv)$.
+
+\item Zero element:
+  $\veczero \times \vecu
+  =
+  \veczero
+  =
+  \vecu \times \veczero$.
+
+\item Self-inverse: $\vecu \times \vecu = \veczero$.
+\end{enumerate}
+
+If $\vecu = \langle u_1, u_2, u_3 \rangle$ and
+$\vecv = \langle v_1, v_2, v_3 \rangle$ are nonzero, then by the
+definition of the cross product we have
+%
+\begin{align*}
+\vecu \times \vecv
+&=
+\begin{vmatrix}
+u_2 & u_3 \\
+v_2 & v_3
+\end{vmatrix}
+\veci
+-
+\begin{vmatrix}
+u_1 & u_3 \\
+v_1 & v_3
+\end{vmatrix}
+\vecj
++
+\begin{vmatrix}
+u_1 & u_2 \\
+v_1 & v_2
+\end{vmatrix}
+\veck \\
+&=
+\left\langle
+u_2 v_3 - u_3 v_2,\; u_3 v_1 - u_1 v_3,\; u_1 v_2 - u_2 v_1
+\right\rangle.
+\end{align*}
+%
+The dot product of $\vecu$ and the last equation is
+%
+\begin{align*}
+\vecu \cdot (\vecu \times \vecv)
+&=
+u_1 ( u_2 v_3 - u_3 v_2 ) +
+u_2 ( u_3 v_1 - u_1 v_3 ) +
+u_3 ( u_1 v_2 - u_2 v_1 ) \\
+&=
+0.
+\end{align*}
+%
+Again by direct computation, we see that the dot product of $\vecv$
+and $\vecu \times \vecv$ is
+%
+\begin{align*}
+\vecv \cdot (\vecu \times \vecv)
+&=
+v_1 ( u_2 v_3 - u_3 v_2 ) +
+v_2 ( u_3 v_1 - u_1 v_3 ) +
+v_3 ( u_1 v_2 - u_2 v_1 ) \\
+&=
+0.
+\end{align*}
+%
+From section~\ref{sec:dot_product}, we know that two nonzero vectors
+are perpendicular if and only if their dot product is zero. The last
+two equations show that $\vecu$ and $\vecv$ are both perpendicular to
+$\vecu \times \vecv$. In other words, we have proved the following
+result.
+
+\begin{theorem}
+\label{thm:vectors_matrices:u_v_parallel_u_dot_v}
+If $\vecu$ and $\vecv$ are nonzero vectors in three-dimensional space,
+then both of them are orthogonal to $\vecu \times \vecv$. That is
+\[
+\vecu \cdot (\vecu \times \vecv)
+=
+0
+=
+\vecv \cdot (\vecu \times \vecv).
+\]
+\end{theorem}
+
+Similarly, we can also prove
+Theorem~\ref{thm:vectors_matrices:more_properties_cross_product} using
+direct calculation. Here is a proof using Sage:
+%
+\begin{lstlisting}
+sage: var("u_1, u_2, u_3");
+sage: var("v_1, v_2, v_3");
+sage: var("w_1, w_2, w_3");
+sage: # prove perpendicularity property
+sage: u = vector([u_1, u_2, u_3])
+sage: v = vector([v_1, v_2, v_3])
+sage: w = vector([w_1, w_2, w_3])
+sage: u * (u.cross_product(v))
+(u_2*v_3 - u_3*v_2)*u_1 - (u_1*v_3 - u_3*v_1)*u_2 + (u_1*v_2 - u_2*v_1)*u_3
+sage: expand(u * (u.cross_product(v)))
+0
+sage: v * (u.cross_product(v))
+(u_2*v_3 - u_3*v_2)*v_1 - (u_1*v_3 - u_3*v_1)*v_2 + (u_1*v_2 - u_2*v_1)*v_3
+sage: expand(v * (u.cross_product(v)))
+0
+sage: # prove matrix property
+sage: u.cross_product(v.cross_product(w)) == (u*w)*v - (u*v)*w
+True
+sage: m = matrix([list(u), list(v), list(w)]); m
+[u_1 u_2 u_3]
+[v_1 v_2 v_3]
+[w_1 w_2 w_3]
+sage: bool(u*(v.cross_product(w)) == m.det())
+True
+\end{lstlisting}
+
+\begin{theorem}
+\label{thm:vectors_matrices:more_properties_cross_product}
+If $\vecu$ and $\vecv$ are nonzero vectors in three-dimensional space,
+then we have
+%
+\begin{enumerate}
+\item
+  $\vecu \times (\vecv \times \vecw)
+  =
+  (\vecu \cdot \vecw) \vecv - (\vecu \cdot \vecv) \vecw$.
+
+\item
+  $\vecu \cdot (\vecv \times \vecw)
+  =
+  \begin{vmatrix}
+    u_1 & u_2 & u_3 \\
+    v_1 & v_2 & v_3 \\
+    w_1 & w_2 & w_3
+  \end{vmatrix}$.
+\end{enumerate}
+\end{theorem}
