@@ -466,3 +466,139 @@ two vectors are parallel if and only if they are linearly
 dependent. In other words, if two vectors are parallel then they are
 linearly dependent. The converse is also true: if two vectors are
 linearly dependent, then they are parallel.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Three-dimensional vectors}
+\index{vectors!three-dimensional}
+
+Just as vectors in the plane are described by two components, so
+vectors in three-dimensional space are described by three components,
+as shown in Figure~\ref{fig:vectors_matrices:3D_vector}. If $\vecu$ is
+a vector whose tail is the origin $(0,0,0)$ and whose head is
+$(u_1, u_2, u_3)$, then the \emph{component form} of $\vecu$ is
+$\vecu = \langle u_1, u_2, u_3 \rangle$. Moving from two dimensions to
+three does not change many of the vector results presented earlier in
+this chapter. In fact, the magnitude of $\vecu$ is similarly defined as
+%
+\begin{equation}
+\label{eq:vectors_matrices:magnitude_three_dimensional_vector}
+\vecvertl \vecu \vecvertr
+=
+\sqrt{u_1^2 + u_2^2 + u_3^2}
+\end{equation}
+%
+and if $\vecu \neq \veczero$ then its \emph{normalized form} is
+%
+\begin{equation}
+\label{eq:normalize_vector_three_dimensions}
+\frac{\vecu}{\vecvertl \vecu \vecvertr}
+=
+\vecu \frac{1}{\vecvertl \vecu \vecvertr}.
+\end{equation}
+%
+Definition~\ref{def:vectors_matrices:vector_operations} can be easily
+cast in terms of vectors in three-dimensional space; we simply add an
+extra component.
+
+\begin{figure}[!htpb]
+\centering
+%% \begin{pspicture}(-1,-2)(4,4)
+%% \pstThreeDCoor[linecolor=black,Alpha=-280,xMin=-0.5,xMax=4,yMin=-0.5,yMax=4,zMin=-0.5,zMax=4]
+%% \pstThreeDDot[linecolor=blue,dotsize=4pt](1,4,5)\uput[0](2,2.8){$(u_1, u_2, u_3)$}
+%% \pstThreeDLine[linewidth=1.5pt,arrows=->](0,0,0)(1,4,5)\uput[0](0.5,1.5){$\vecu$}
+%% \pstThreeDLine[linewidth=0.5pt,linecolor=blue,linestyle=dashed](0,0,0)(1,4,0)
+%% \pstThreeDLine[linewidth=0.5pt,linecolor=blue,linestyle=dashed](1,4,0)(1,4,5)
+%% \end{pspicture}
+\includegraphics[scale=0.8]{images/vector-3d}
+\caption{A vector in three-dimensional space.}
+\label{fig:vectors_matrices:3D_vector}
+\end{figure}
+
+%% \begin{practice}
+%% Let \emph{\vecu} be a three-dimensional vector and let $c$ be a
+%% scalar. Show that $\vecvertl c \emph{\vecu}
+%% \vecvertr = |c| \, \vecvertl \emph{\vecu}
+%% \vecvertr$.
+%% \end{practice}
+
+%% \begin{practice}
+%% \label{prac:triangle_inequality_three_dimensions}
+%% Given two vectors $\emph{\vecu} = \langle 3, 5, 7 \rangle$ and
+%% $\emph{\textbf{v}} = \langle -1, 2, 9 \rangle$, show that
+%% $\vecvertl \emph{\vecu} + \emph{\textbf{v}}
+%% \vecvertr \leq \vecvertl \emph{\vecu}
+%% \vecvertr + \vecvertl \emph{\textbf{v}} \vecvertr$.
+%% \end{practice}
+
+\begin{figure}[!htpb]
+\centering
+%% \begin{pspicture}(-3,-1)(3,3)
+%% \pstThreeDCoor[linecolor=black,xMin=-0.5,xMax=3,yMin=-0.5,yMax=3,zMin=-0.5,zMax=3]
+%% \pstThreeDLine[linewidth=1.5pt,arrows=->](0,0,0)(2,0,0)
+%% \pstThreeDLine[linewidth=1.5pt,arrows=->](0,0,0)(0,2,0)
+%% \pstThreeDLine[linewidth=1.5pt,arrows=->](0,0,0)(0,0,2)
+%% \uput[0](-2.7,-0.5){$(1,0,0)$}\uput[0](-1,-0.1){\veci}
+%% \uput[0](1.2,-0.4){$(0,1,0)$}\uput[0](0.5,0){\vecj}
+%% \uput[0](-0.1,1.8){$(0,0,1)$}\uput[0](0,1){\veck}
+%% \end{pspicture}
+\includegraphics[scale=0.8]{images/unit-vectors-3d}
+\caption{Unit vectors in three-dimensional space.}
+\label{fig:vectors_matrices:unit_vectors_3D}
+\end{figure}
+
+If a nonzero vector $\vecu$ (in two- or three-dimensional space) is
+multiplied by $1 / \vecvertl \vecu \vecvertr$, the result is a vector
+of magnitude $1$. Vectors of magnitude $1$ are called
+\emph{unit vectors}\index{unit vectors}. Thus the vector in
+equation~(\ref{eq:vectors_matrices:two_dimensional_unit_vector}) is a
+two-dimensional unit vector. Of particular interest in physics are the
+\emph{standard unit vectors}\index{standard unit vectors}
+\[
+\veci = \langle 1, 0 \rangle
+\qquad\text{and}\qquad
+\vecj = \langle 0, 1 \rangle
+\]
+in the two-dimensional plane, and their three-dimensional
+counterparts:
+%
+\begin{equation}
+\label{eq:vectors_matrices:standard_unit_vectors_three_dimensions}
+\veci = \langle 1, 0, 0 \rangle, \qquad
+\vecj = \langle 0, 1, 0 \rangle, \qquad
+\veck = \langle 0, 0, 1 \rangle.
+\end{equation}
+%
+The three-dimensional standard unit vectors are shown in
+Figure~\ref{fig:vectors_matrices:unit_vectors_3D}. These vectors play
+a role similar to the number $1$, where every real number $a$ can be
+expressed as $a = a \cdot 1$. So every three-dimensional~(respectively
+two-dimensional) vector $\vecu = \langle u_1, u_2, u_3 \rangle$ can be
+expressed in terms of the standard unit
+vectors~(\ref{eq:vectors_matrices:standard_unit_vectors_three_dimensions})
+as
+\[
+\vecu
+=
+\langle u_1, u_2, u_3 \rangle
+=
+\langle u_1, 0, 0 \rangle +
+\langle 0, u_2, 0 \rangle + \langle 0, 0, u_3 \rangle
+=
+u_1 \veci + u_2 \vecj + u_3 \veck.
+\]
+For example, in the plane we have
+$\langle 2, 3 \rangle = 2\veci + 3 \vecj$. In three-dimensional space
+we have $\langle 5, -1, 7 \rangle = 5 \veci - \vecj + 7 \veck$, whose
+magnitude is $5\sqrt{3}$ and so
+\[
+\frac{1}{5\sqrt{3}} \langle 5, -1, 7 \rangle
+=
+\frac{1}{\sqrt{3}}\veci
+-
+\frac{1}{5\sqrt{3}}\vecj
++
+\frac{7}{5\sqrt{3}}\veck
+\]
+is a unit vector in the same direction as $\langle 5, -1, 7 \rangle$.
