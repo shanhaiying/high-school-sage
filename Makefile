@@ -9,6 +9,7 @@ FILE = book
 all:
 	make latex
 	makeindex $(FILE)
+	bibtex $(FILE)
 	make latex
 	make clean
 

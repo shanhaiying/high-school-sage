@@ -739,6 +739,102 @@ comparing with \verb!r!.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Kid RSA}
+
+This section presents Kid RSA~\cite[p.17]{Koblitz1998}, a simplified
+version of the RSA cryptosystem. Neal Koblitz developed Kid RSA as a
+tool for teaching cryptography without requiring advanced
+mathematics. Most of the necessary concepts and techniques for
+understanding Kid RSA are already presented in this chapter. It is
+very important to point out that this section is \emph{not} an
+introduction to cryptography. Materials presented in this section are
+intended for teaching and learning purposes only. If you require more
+details about cryptography, please consult specialized texts such
+as~\cite{MenezesEtAl1996,Stinson2006,TrappeWashington2006}.
+
+In the Kid RSA system, there are two keys: the \emph{public key} and
+its corresponding \emph{private key}. A public key is used for
+\emph{scrambling} messages that you want to keep secret from prying
+eyes. The private key corresponding to your public key is used for
+\emph{unscrambling} the gibberish resulting from the scrambling
+process. In principle, only your private key can unscramble the
+gibberish that has been scrambled using your public key. You can let
+anyone know your public key. But you should keep your private key only
+to yourself. (You don't want anyone to read that scrambled love
+letter, right?)
+
+Here is how Kid RSA works. First, Alice chooses four random positive
+integers $a, b, A, B$ and computes the following numbers:
+%
+\begin{align*}
+M &= ab - 1 \\[4pt]
+e &= AM + a \\[4pt]
+d &= BM + b \\[4pt]
+n &= \frac{ed - 1}{M}.
+\end{align*}
+%
+Her public key is the pair $(n, e)$ and her private key is $d$.
+
+A message in Kid RSA is any positive integer $x < n$. Alice's friend,
+Bob, wants to send her a secret message $x$. Using Alice's public key,
+Bob scrambles the message $x$ by multiplying $x$ by $e$, then dividing
+the product $xe$ by $n$. The remainder $y$ upon dividing $xe$ by $n$
+is the scrambled message. Bob can now send $y$~(the scrambled message)
+to Alice via email, the postal service, etc.
+
+To unscramble $y$, Alice multiplies $y$ by her private key $d$ to
+obtain the product $yd$. She then divides $yd$ by $n$ and keeps only
+the remainder resulting from this division. The remainder upon
+dividing $yd$ by $n$ is Bob's original unscrambled message $x$.
+
+As an example, suppose Alice chooses the positive integers
+\[
+a = 4,\quad
+b = 5,\quad
+A = 6,\quad
+B = 7.
+\]
+%
+\begin{lstlisting}
+sage: a = 4; b = 5; A = 6; B = 7
+sage: M = a*b - 1
+sage: e = A*M + a
+sage: d = B*M + b
+sage: n = (e*d - 1) / M
+sage: n, e
+(857, 118)
+sage: d
+138
+\end{lstlisting}
+%
+Then her public key is $(857, 118)$ and her private key is $138$. Bob
+wants to send Alice the message $x = 500$. What is the scrambled
+version of $x$?
+%
+\begin{lstlisting}
+sage: x = 500
+sage: y = Integer(mod(x*e, n)); y
+724
+\end{lstlisting}
+%
+The scrambled version of $x$ is $y = 724$. Bob can now send $y = 724$
+to Alice. To unscramble $y = 724$, Alice performs the following
+computation:
+%
+\begin{lstlisting}
+sage: mod(y*d, n)
+500
+sage: x
+500
+sage: Integer(mod(y*d, n)) == x
+True
+\end{lstlisting}
+%
+Thus Bob's original message is successfully unscrambled.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section*{Problems}
 \addcontentsline{toc}{section}{Problems}
 
