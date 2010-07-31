@@ -738,3 +738,182 @@ equation~(\ref{eq:vectors_matrices:geometric_interpretation_dot_product}), we se
 two non-zero vectors are perpendicular (also called
 \emph{orthogonal})\index{vectors!orthogonal} if and only if their dot
 product is zero.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Parallel and perpendicular vectors}
+\index{parallel vectors}
+\index{perpendicular vectors}
+
+In section~\ref{sec:scalars_vectors}, we resolved a
+two-dimensional vector into components that are parallel to the
+axes. A similar technique can be used to resolve a three-dimensional
+vector into components that are also parallel to the axes. We now
+present another method for resolving a vector $\vecu$ into two
+components $\vecu_{\vecpar}$ and $\vecu_{\vecper}$, which are parallel
+and perpendicular to a given nonzero vector $\vecv$, respectively.
+
+The left-hand side of
+Figure~\ref{fig:vectors_matrices:_parallel_perpendicular_vectors} shows
+the case where the angle $\theta$ between $\vecu$ and $\vecv$ is
+$0 < \theta < \pi/2$; the right-hand side of the figure shows the case
+where $\pi/2 < \theta < \pi$. We can think of
+$\vecu_{\vecpar}$ as being the shadow\index{vectors!shadow} of
+$\vecu$ cast on the line in the direction of $\vecv$. Then the
+magnitude of $\vecu_{\vecpar}$ is the length of the shadow. By
+the triangle rule for vector difference~(see
+Figure~\ref{fig:vectors_matrices:vector_difference_parallelogram_triangle}),
+we have $\vecu_{\vecper} = \vecu - \vecu_{\vecpar}$. All it remains
+now is to find an expression for $\vecu_{\vecpar}$ in terms of the
+known vectors $\vecu$ and $\vecv$.
+
+\begin{figure}[!htpb]
+\centering
+\begin{tikzpicture}
+% left-hand side figure
+\draw[->,>=stealth,very thick] (-0.5,0.03) -- (2,1.4) node[above]{$\vecu$};
+\draw[->,>=stealth,very thick] (-0.5,0.03) -- (3.3,0.258) node[below]{$\vecv$};
+\draw[->,>=stealth,very thick] (-0.5,0.03) -- node[below]{$\vecu_{\vecpar}$} (2.072937,0.184375);
+\draw[->,>=stealth,very thick] (-0.5,0.03) -- node[left]{$\vecu_{\vecper}$} (-0.572937,1.245625);
+\draw[color=blue,semithick,dash pattern=on 4pt off 4pt] (2.072937,0.184375) -- (2,1.4);
+\draw[color=blue,semithick,dash pattern=on 4pt off 4pt] (-0.572937,1.245625) -- (2,1.4);
+\draw[color=blue,semithick,dash pattern=on 4pt off 4pt] (-1,0) -- (-0.5,0.03);
+\draw[color=blue,semithick,dash pattern=on 4pt off 4pt] (3.3,0.258) -- (4,0.3);
+\draw[->,>=stealth] (0.5,0.089999) arc (0:25:1);
+\node at (0.7,0.4) {$\theta$};
+%
+% right-hand side figure
+\draw[->,>=stealth,very thick] (8.072937,0.184375) -- (5.427063,1.245625) node[above]{$\vecu$};
+\draw[->,>=stealth,very thick] (5.5,0.03) -- (9.3,0.258) node[below]{$\vecv$};
+\draw[->,>=stealth,very thick] (8.072937,0.184375) -- node[below]{$\vecu_{\vecpar}$} (5.5,0.03);
+\draw[->,>=stealth,very thick] (8.072937,0.184375) -- (8,1.4) node[right]{$\vecu_{\vecper}$};
+\draw[color=blue,semithick,dash pattern=on 4pt off 4pt] (8,1.4) -- (5.427063,1.245625);
+\draw[color=blue,semithick,dash pattern=on 4pt off 4pt] (5.5,0.03) -- (5.427063,1.245625);
+\draw[color=blue,semithick,dash pattern=on 4pt off 4pt] (9.3,0.258) -- (10,0.3);
+\draw[color=blue,semithick,dash pattern=on 4pt off 4pt] (5,0) -- (5.5,0.03);
+\draw[->,>=stealth] (8.3,0.198) arc (0:150:0.3);
+\node at (8.4,0.5) {$\theta$};
+\end{tikzpicture}
+\caption{Resolving $\vecu$ into components parallel and
+  perpendicular to $\vecv$. The angle between $\vecu$ and
+  $\vecv$ is $0 < \theta < \pi/2$ (left) and $\pi/2 < \theta < \pi$
+(right).}
+\label{fig:vectors_matrices:_parallel_perpendicular_vectors}
+\end{figure}
+
+Since $\vecu_{\vecpar}$ and $\vecv$ are parallel, then one
+is a scalar multiple of the other, that is
+%
+\begin{equation}
+\label{eq:vectors_matrices:u_par_parallel_v}
+\vecu_{\vecpar}
+=
+c\vecv
+\end{equation}
+%
+for some scalar $c \neq 0$. Using the parallelogram rule for vector
+addition, we have
+$\vecu = \vecu_{\vecpar} + \vecu_{\vecper}$. Then the dot product of
+$\vecu$ and $\vecv$ is
+%
+\begin{equation}
+\label{eq:vectors_matrices:u_per_orthogonal_v}
+\begin{aligned}
+\vecu \cdot \vecv
+&=
+(\vecu_{\vecpar} + \vecu_{\vecper}) \cdot \vecv \\
+&=
+\vecu_{\vecpar} \cdot \vecv +
+\vecu_{\vecper} \cdot \vecv.
+\end{aligned}
+\end{equation}
+%
+By definition, $\vecu_{\vecper}$ is orthogonal to $\vecv$,
+hence their dot product is zero. Using this fact and
+substituting~(\ref{eq:vectors_matrices:u_par_parallel_v})
+into~(\ref{eq:vectors_matrices:u_per_orthogonal_v}), we see that
+equation~(\ref{eq:vectors_matrices:u_per_orthogonal_v}) simplifies to
+%
+\begin{align*}
+\vecu \cdot \vecv
+&=
+\vecu_{\vecpar} \cdot \vecv \\
+&=
+(c \vecv) \cdot \vecv \\
+&=
+c (\vecv \cdot \vecv).
+\end{align*}
+%
+Solving the last equation for $c$, we have $c = \frac {\vecu \cdot
+\vecv} {\vecv \cdot \vecv}$. Substitute this into
+equation~(\ref{eq:vectors_matrices:u_par_parallel_v}) results in
+%
+\begin{align}
+\vecu_{\vecpar}
+&=
+\frac {\vecu \cdot \vecv} {\vecv \cdot \vecv}
+\vecv %
+\label{eq:vectors_matrices:u_par_vector_projection} \\[4pt]
+\vecu_{\vecper}
+&=
+\vecu - \vecu_{\vecpar}. %
+\label{eq:vectors_matrices:u_per_scalar_projection}
+\end{align}
+%
+The upshot is that given two non-zero vectors $\vecu$ and
+$\vecv$, equations~(\ref{eq:vectors_matrices:u_par_vector_projection})
+and~(\ref{eq:vectors_matrices:u_per_scalar_projection}) allow us to
+resolve $\vecu$ into two component vectors $\vecu_{\vecpar}$ and
+$\vecu_{\vecper}$ that are, respectively, parallel and
+orthogonal to $\vecv$.
+
+\begin{example}
+\index{vectors!projection}
+Let $\vecu = \langle 3, 4, -5 \rangle$ and
+$\vecv = \langle -7, 8, 9 \rangle$. Find the projection of $\vecu$
+onto $\vecv$, and a vector that is orthogonal to $\vecv$.
+\end{example}
+
+\begin{proof}[Solution]
+To compute the projection of $\vecu$ onto $\vecv$, we use
+equation~(\ref{eq:vectors_matrices:u_par_vector_projection}). So
+$\vecu \cdot \vecv = 3(-7) + 4(8) - 5(9) = -34$ and
+$\vecv \cdot \vecv = (-7)^2 + 8^2 + 9^2 = 194$. Then
+\[
+\vecu_{\vecpar}
+=
+-\frac{34}{194} \langle -7, 8, 9 \rangle
+=
+\left\langle
+\frac{119}{97},\, -\frac{136}{97},\, -\frac{153}{97}
+\right\rangle.
+\]
+Next we use
+equation~(\ref{eq:vectors_matrices:u_per_scalar_projection}) to find a
+vector that is parallel to $\vecv$. Then
+\[
+\vecu_{\vecper}
+=
+\langle 3, 4, -5 \rangle -
+\left\langle
+\frac{119}{97},\, -\frac{136}{97},\, -\frac{153}{97}
+\right\rangle
+=
+\left\langle
+\frac{172}{97},\, \frac{524}{97},\, -\frac{332}{97}
+\right\rangle
+\]
+as required. Using Sage, we get
+%
+\begin{lstlisting}
+sage: u = vector([3, 4, -5])
+sage: v = vector([-7, 8, 9])
+sage: u_par = ((u*v) / (v*v)) * v; u_par
+(119/97, -136/97, -153/97)
+sage: u_per = u - u_par; u_per
+(172/97, 524/97, -332/97)
+\end{lstlisting}
+%
+which agrees with our calculation above.
+\end{proof}
