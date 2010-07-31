@@ -602,3 +602,139 @@ magnitude is $5\sqrt{3}$ and so
 \frac{7}{5\sqrt{3}}\veck
 \]
 is a unit vector in the same direction as $\langle 5, -1, 7 \rangle$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The dot product}
+\label{sec:dot_product}
+\index{dot product}
+
+Section~\ref{sec:scalars_vectors} discussed vectors and
+showed how we can perform various arithmetic operations on them. In
+particular, we have shown how a vector can be multiplied by a
+scalar. We now consider the case of multiplying two vectors.
+
+\begin{definition}
+\label{def:vectors_matrices:vector_dot_product}
+Let $\vecu = \langle u_1, u_2, u_3 \rangle$ and
+$\vecv = \langle v_1, v_2, v_3 \rangle$ be
+three-dimensional vectors. Then the vector \emph{dot product}
+of $\vecu$ and $\vecv$ is defined as
+\[
+\vecu \cdot \vecv
+=
+u_1 v_1 + u_2 v_2 + u_3 v_3.
+\]
+\end{definition}
+
+The vector dot product is also called the scalar or inner
+product\index{scalar product}\index{inner product}. Unlike scalar
+multiplication of a scalar $c$ and a vector $\vecu$, which results
+in another vector $c\vecu$, the dot product of two vectors
+$\vecu$ and $\vecv$ is a scalar. A similar definition holds for
+two-dimensional vectors. Thus to find the dot product of two vectors
+both of which are in two- or three-dimensional space, we multiply the
+corresponding components and add up the results.
+
+\begin{lstlisting}
+sage: u = vector([3, 5, 7])
+sage: v = vector([-2, 7, -9])
+sage: # compute dot product from definition
+sage: zip(u, v)
+[(3, -2), (5, 7), (7, -9)]
+sage: p = map(prod, zip(u, v)); p
+[-6, 35, -63]
+sage: sum(p)
+-34
+sage: # compute dot product using built-in functions
+sage: u.dot_product(v)
+-34
+sage: u * v
+-34
+\end{lstlisting}
+
+We can also find the dot product of two vectors in terms of the angle
+between them. If $\theta$ is the angle between two vectors $\vecu$
+and $\vecv$ in two- or three-dimensional space, then their dot
+product obeys the following geometric interpretation:
+\index{dot product!geometric interpretation}
+%
+\begin{equation}
+\label{eq:vectors_matrices:geometric_interpretation_dot_product}
+\vecu \cdot \vecv
+=
+\begin{cases}
+\vecvertl \vecu \vecvertr \,
+\vecvertl \vecv \vecvertr \cos\theta
+&\text{if $\vecu \neq \veczero$ and $\vecv \neq \veczero$}\\
+0 & \text{if $\vecu = \veczero$ or $\vecv = \veczero$}.
+\end{cases}
+\end{equation}
+%
+Using the last equation, the angle between two nonzero vectors is
+given by
+%
+\begin{equation}
+\label{eq:vectors_matrices:angle_between_vectors}
+\theta
+=
+\cos^{-1}
+\left(
+\frac {\vecu \cdot \vecv}
+{\vecvertl \vecu \vecvertr \, \vecvertl \vecv \vecvertr}
+\right).
+\end{equation}
+
+\begin{example}
+Consider the vectors $\vecu = \langle 3, -1, 7 \rangle$
+and $\vecv = \langle -2, 5, 8 \rangle$. Find the angle
+between $\vecu$ and $\vecv$.
+\end{example}
+
+\begin{proof}[Solution]
+To find the angle between two vectors, we use
+equation~(\ref{eq:vectors_matrices:angle_between_vectors}). From
+Definition~\ref{def:vectors_matrices:vector_dot_product}, the dot
+product of $\vecu$ and $\vecv$ is
+\[
+\vecu \cdot \vecv
+=
+3(-2) + (-1)5 + 7(8)
+=
+45.
+\]
+Using
+equation~(\ref{eq:vectors_matrices:magnitude_three_dimensional_vector}),
+the magnitude of $\vecu$ is
+$\vecvertl \vecu \vecvertr = \sqrt{9 + 1 + 49} = \sqrt{59}$ and that
+of $\vecv$ is
+$\vecvertl \vecv \vecvertr = \sqrt{4 + 25 + 64} = \sqrt{93}$.
+Substitute the value of the dot product and the individual magnitudes
+into equation~(\ref{eq:vectors_matrices:angle_between_vectors}) to get
+\[
+\theta
+=
+\cos^{-1} \left( \frac{45}{\sqrt{59 \cdot 93}} \right)
+\]
+which is the angle between $\vecu$ and $\vecv$. This angle can
+be computed using Sage as follows:
+%
+\begin{lstlisting}
+sage: u = vector([3, -1, 7]); v = vector([-2, 5, 8])
+sage: numer = u * v
+sage: denom = u.norm() * v.norm()
+sage: arccos(numer / denom)
+arccos(45/(sqrt(59)*sqrt(93)))
+\end{lstlisting}
+%
+which is the same as what we have above.
+\end{proof}
+
+From plane geometry, we know that two lines are perpendicular if the
+angle $\theta$ between them is $90^{\circ}$ or $\theta = \pi / 2$
+radians. Now $\cos (\pi / 2) = 0$ and using
+equation~(\ref{eq:vectors_matrices:geometric_interpretation_dot_product}), we see that
+two non-zero vectors are perpendicular (also called
+\emph{orthogonal})\index{vectors!orthogonal} if and only if their dot
+product is zero.
