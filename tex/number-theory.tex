@@ -6,16 +6,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Integers}
+\index{integer}
 
-An \emph{integer} is a whole number. It can be positive, negative, or
-zero. Examples of integers include $-13$, $-1$, $0$, and $42$. When we
-talk about all the whole numbers, we can use the name \emph{integer}
-to refer to them, or we can list all the whole numbers like so:
+An \emph{integer}\index{integer} is a whole number. It can be
+positive, negative, or zero. Examples of integers include $-13$, $-1$,
+$0$, and $42$. When we talk about all the whole numbers, we can use
+the name \emph{integer}\index{integer} to refer to them, or we can
+list all the whole numbers like so:
 \[
 \dots, -4, -3, -2, -1, 0, 1, 2, 3, 4, \dots
 \]
-But for convenience, we usually write $\ZZ$ to denote the set of all
-integers:
+But for convenience, we usually write $\ZZ$\index{$\ZZ$} to denote the
+set of all integers:
 \[
 \ZZ
 =
@@ -63,14 +65,15 @@ gives \verb!False! because $3.1415$ is not an integer.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Prime numbers}
+\index{prime}
 
-A positive integer $n > 1$ is a \emph{prime} number if its factors are
-exclusively $1$ and itself. The integer $2$ is prime because its only
-factors are $1$ and $2$. As a matter of fact, $2$ is the smallest
-prime integer. The next prime after $2$ is $3$. However, the next
-integer $4$ is not prime because $2$ is a factor of $4$. In Sage, the
-command \verb!is_prime! tests whether or not an integer is prime. We
-can obtain the first $15$ prime numbers using the command
+A positive integer $n > 1$ is a \emph{prime}\index{prime} number if
+its factors are exclusively $1$ and itself. The integer $2$ is prime
+because its only factors are $1$ and $2$. As a matter of fact, $2$ is
+the smallest prime integer. The next prime after $2$ is $3$. However,
+the next integer $4$ is not prime because $2$ is a factor of $4$. In
+Sage, the command \verb!is_prime! tests whether or not an integer is
+prime. We can obtain the first $15$ prime numbers using the command
 \verb!primes_first_n!.
 
 \begin{lstlisting}
@@ -126,15 +129,15 @@ Traceback (most recent call last):
 ValueError: no previous prime
 \end{lstlisting}
 
-There are various questions we can ask about prime numbers. For
-example, how many prime integers are there? Over two thousand years
-ago, the Greek mathematician Euclid proved that there are infinitely
-many primes. No matter how high up we count, there is still a prime
-number to be found.
+There are various questions we can ask about prime\index{prime}
+numbers. For example, how many prime integers are there? Over two
+thousand years ago, the Greek mathematician Euclid\index{Euclid}
+proved that there are infinitely many primes. No matter how high up we
+count, there is still a prime number to be found.
 
 Here's another question: If $n$ is a positive integer greater than
-$1$, how many primes are there between $1$ and $n$? In the case of $n
-= 50$, we could use the command \verb!primes_first_n! to list the
+$1$, how many primes are there between $1$ and $n$? In the case of
+$n = 50$, we could use the command \verb!primes_first_n! to list the
 first 20 primes, then count how many of those primes are less than or
 equal to $50$.
 %
@@ -152,10 +155,10 @@ $50$ into the list \verb!P!. We then used the command \verb!len! to
 obtain the length of that list. From the above output, there are $15$
 primes less than or equal to $n = 50$.
 
-Alternatively, we can let the command \verb!prime_pi! do all the hard
-work for us. Given an integer $n$---either positive, negative, or
-zero---the command \verb!prime_pi(n)! counts how many primes are less
-than or equal to $n$.
+Alternatively, we can let the command \verb!prime_pi!\index{$\pi(x)$}
+do all the hard work for us. Given an integer $n$---either positive,
+negative, or zero---the command \verb!prime_pi(n)! counts how many
+primes are less than or equal to $n$.
 %
 \begin{lstlisting}
 sage: prime_pi(50)
@@ -172,11 +175,12 @@ sage: prime_pi(-10)
 0
 \end{lstlisting}
 %
-To study the output of \verb!prime_pi(n)! as the integer \verb!n!
-increases, we could substitute $n = 1, 2, 3, \dots$ into the
-command. Or we could use \verb!plot! together with \verb!prime_pi! to
-visualize how the output of \verb!prime_pi! changes as $n$ increases
-in value. Figure~\ref{fig:number_theory:prime_pi_for_n_leq_100}
+To study the output of \verb!prime_pi(n)!\index{$\pi(x)$} as the
+integer \verb!n! increases, we could substitute $n = 1, 2, 3, \dots$
+into the command. Or we could use \verb!plot! together with
+\verb!prime_pi! to visualize how the output of \verb!prime_pi! changes
+as $n$ increases in
+value. Figure~\ref{fig:number_theory:prime_pi_for_n_leq_100}
 illustrates the change in the values of \verb!prime_pi! as $n$ takes
 on all integer values from $0$ up to and including $100$. Notice that
 when $n = 50$, the output of \verb!prime_pi! is $15$, which confirms
@@ -218,25 +222,27 @@ sage: plot(prime_pi, 0, 1000)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Divisibility}
+\index{divisibility}
 
-For any two integers $a$ and $n$, we say that $a$ \emph{divides} $n$
-if $a$ is a factor of $n$. That is, if we can find an integer $b$ such
-that $n = ab$, then $a$ is a factor of $n$. In that case, $b$ is also
-a factor of $n$. The integer $2$ divides, or is a factor of, $4$
-because $4 = 2 \times 2$. Similarly, both $2$ and $3$ are factors of,
-or both divide, $6$ because $6 = 2 \times 3$.
+For any two integers $a$ and $n$, we say that $a$
+\emph{divides}\index{divides} $n$ if $a$ is a factor of $n$. That is,
+if we can find an integer $b$ such that $n = ab$, then $a$ is a
+factor\index{factor} of $n$. In that case, $b$ is also a factor of
+$n$. The integer $2$ divides, or is a factor of, $4$ because
+$4 = 2 \times 2$. Similarly, both $2$ and $3$ are factors of, or both
+divide, $6$ because $6 = 2 \times 3$.
 
-Does every positive integer have a factor? Yes. In fact, if $n > 1$ is
-an integer, then $n$ has a factor that is greater than $1$. We can
-make a stronger claim: Every integer $n > 1$ has a prime factor. A
-factorization, or prime factorization, of $n$ is product containing
-all the primes that divide $n$. Examples of prime factorizations
-include $4 = 2 \times 2$ and $6 = 2 \times 3$. However, $8 = 2 \times 4$
-is not a prime factorization of $8$ because the product $2 \times 4$
-has $4$, which is not prime.
+Does every positive integer have a factor\index{factor}? Yes. In fact,
+if $n > 1$ is an integer, then $n$ has a factor that is greater than
+$1$. We can make a stronger claim: Every integer $n > 1$ has a prime
+factor. A factorization, or prime factorization, of $n$ is product
+containing all the primes that divide $n$. Examples of prime
+factorizations include $4 = 2 \times 2$ and $6 = 2 \times 3$. However,
+$8 = 2 \times 4$ is not a prime factorization of $8$ because the
+product $2 \times 4$ has $4$, which is not prime.
 
-To find all the positive divisors of an integer, use the command
-\verb!divisors!.
+To find all the positive divisors\index{divisor} of an integer, use
+the command \verb!divisors!.
 %
 \begin{lstlisting}
 sage: divisors(4)
@@ -262,14 +268,16 @@ sage: factor(8)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Greatest common divisors}
+\index{greatest common divisor}
 
-Let $a$ and $b$ be integers, not both zero. The \emph{greatest common}
-divisor~(GCD) of $a$ and $b$ is the largest positive integer which is
-a factor of both $a$ and $b$. We use $\gcd(a,b)$ to denote this
+Let $a$ and $b$ be integers, not both zero. The
+\emph{greatest common divisor}\index{greatest common divisor}
+(GCD)\index{GCD} of $a$ and $b$ is the largest positive integer which
+is a factor of both $a$ and $b$. We use $\gcd(a,b)$ to denote this
 largest positive factor. If $n$ is any positive integer, then
 $\gcd(n, 0) = n = \gcd(0, n)$. If $a$ and $b$ are both zero, then we
-define their GCD to be $\gcd(0,0) = 0$. The GCD of any two distinct
-primes is $1$, and the GCD of $18$ and $27$ is $9$.
+define their GCD to be $\gcd(0,0) = 0$. The GCD\index{GCD} of any two
+distinct primes is $1$, and the GCD of $18$ and $27$ is $9$.
 %
 \begin{lstlisting}
 sage: gcd(0, 0)
@@ -311,11 +319,12 @@ sage: max(D)
 \end{lstlisting}
 %
 The output of \verb!divisors! is a list. We used the command
-\verb!Set! to convert the result of \verb!divisors! into a set. We
-then used \verb!intersection! to produce the intersection of the two
-sets \verb!D18! and \verb!D27!; this intersection is the set
-\verb!D!. Finally, we used \verb!max! to compute the maximum element
-in the set \verb!D!, i.e. $9$, the GCD we require.
+\verb!Set!\index{set} to convert the result of \verb!divisors! into a
+set. We then used \verb!intersection!\index{intersection} to produce
+the intersection of the two sets \verb!D18! and \verb!D27!; this
+intersection is the set \verb!D!. Finally, we used \verb!max! to
+compute the maximum element in the set \verb!D!, i.e. $9$, the GCD we
+require.
 
 Sage uses \verb!gcd(a, b)! to denote the GCD of $a$ and $b$. The GCD
 of any two integers can be computed as follows:
@@ -330,9 +339,9 @@ sage: gcd(18, 27)
 What about the case where any of $a$ and $b$ is negative? For example,
 how do we compute the GCD of $-18$ and $27$, or $\gcd(-18, -27)$? If
 $a$ is negative, for example, then we compute its
-\emph{absolute value} and use that value to find the GCD of $a$ and
-$b$. The absolute value of a number $x$ is written as $|x|$ and is
-defined as
+\emph{absolute value}\index{absolute value} and use that value to find
+the GCD of $a$ and $b$. The absolute value of a number $x$ is written
+as $|x|$ and is defined as
 \[
 |x|
 =
@@ -397,15 +406,19 @@ of $\gcd(n, 27)$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Relatively prime integers}
+\index{relatively prime}
+\index{coprime}
 
-If $\gcd(a,b) = 1$, we say that $a$ is \emph{coprime}~(or relatively
-prime) to $b$.  In particular, $\gcd(3, 59) = 1$ so 3 is coprime to 59
-and vice versa.
+If $\gcd(a,b) = 1$, we say that $a$ is
+\emph{coprime}\index{coprime}~(or relatively
+prime\index{relatively prime}) to $b$.  In particular,
+$\gcd(3, 59) = 1$ so $3$ is coprime to $59$ and vice versa.
 
-Consider all the integers from 1 to 20, inclusive.  List all those
-integers that are coprime to 20.  In other words, find those integers
-$n$, where $1 \leq n \leq 20$, such that $\gcd(n,20) = 1$. The latter
-task can be easily accomplished with a little bit of Sage programming:
+Consider all the integers from $1$ to $20$, inclusive.  List all those
+integers that are coprime to $20$.  In other words, find those
+integers $n$, where $1 \leq n \leq 20$, such that
+$\gcd(n,20) = 1$. The latter task can be easily accomplished with a
+little bit of Sage programming:
 
 \begin{lstlisting}
 sage: for n in range(1, 21):
@@ -416,7 +429,7 @@ sage: for n in range(1, 21):
 
 The above commands can be placed inside a function called
 \verb!my_phi20! to save the hassle of retyping them every time we want
-to use those exact commands.
+to use those exact commands.\index{Euler phi function}
 
 \begin{lstlisting}
 sage: def my_phi20():
@@ -437,7 +450,7 @@ explicitly generating the list
 \end{equation}
 %
 how can we compute the number of integers between $1$ and $20$,
-inclusive, that are coprime to 20? We could modify our function
+inclusive, that are coprime to $20$? We could modify our function
 \verb!my_phi20! so that it finds the number of positive integers that
 are coprime to a given integer $n$.
 
@@ -456,9 +469,10 @@ sage: my_phi(100)
 40
 \end{lstlisting}
 
-Alternatively, we could use the \emph{Euler phi function}
-$\varphi(n)$, whose corresponding Sage built-in function is
-\verb!euler_phi!.
+Alternatively, we could use the
+\emph{Euler phi function}\index{Euler phi function}
+$\varphi(n)$\index{$\varphi(n)$}, whose corresponding Sage built-in
+function is \verb!euler_phi!.
 
 \begin{lstlisting}
 sage: euler_phi(20)
@@ -473,13 +487,16 @@ sage: euler_phi(100)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Least common multiples}
+\index{least common multiple}
+\index{LCM}
 
 Let $a$ and $b$ be integers, both of which are not zero. The
-\emph{least common multiple}~(LCM) of $a$ and $b$ is the smallest
-positive integer which is a multiple of both $a$ and $b$. We write the
-least common multiple of $a$ and $b$ as $\lcm(a, b)$. If $n$ is any
-integer, then $\lcm(n, 0) = 0$ and $\lcm(0, n) = 0$. Where $a$ and $b$
-are both zero, then $\lcm(0,0) = 0$.
+\emph{least common multiple}\index{least common multiple}
+(LCM\index{LCM}) of $a$ and $b$ is the smallest positive integer which
+is a multiple of both $a$ and $b$. We write the least common multiple
+of $a$ and $b$ as $\lcm(a, b)$. If $n$ is any integer, then $\lcm(n,
+0) = 0$ and $\lcm(0, n) = 0$. Where $a$ and $b$ are both zero, then
+$\lcm(0,0) = 0$.
 
 \begin{lstlisting}
 sage: lcm(0, 0)
@@ -547,6 +564,7 @@ ab,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Simplifying fractions}
+\index{fraction}
 
 A fraction such as $\frac{12}{8}$ can be simplified as follows. Find
 the GCD of $12$ and $8$, and divide both the numerator and denominator
@@ -635,16 +653,18 @@ sage: (7/5) + (6/3)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Clock arithmetic}
+\index{clock arithmetic}
+\index{congruence}
 
 When one integer is divided by a nonzero integer, we usually get a
-remainder. For example, upon dividing 23 by 5, we get a remainder of
-3; when 8 is divided by 5, the remainder is again 3. Clock arithmetic,
-or congruence, is very useful for discussing the situation in which
-two integers have the same remainder upon division by a nonzero
-integer. Let $a,b,n$ be integers such that $n \neq 0$. If $a$ and $b$
-have the same remainder upon division by $n$, then we say that $a$ is
-\emph{congruent} to $b$ modulo $n$ and denote this relationship by
-writing
+remainder. For example, upon dividing $23$ by $5$, we get a remainder
+of $3$; when $8$ is divided by $5$, the remainder is again $3$. Clock
+arithmetic, or congruence, is very useful for discussing the situation
+in which two integers have the same remainder upon division by a
+nonzero integer. Let $a,b,n$ be integers such that $n \neq 0$. If $a$
+and $b$ have the same remainder upon division by $n$, then we say that
+$a$ is \emph{congruent}\index{congruence} to $b$ modulo $n$ and denote
+this relationship by writing
 \[
 a \equiv b \pmod{n}.
 \]
@@ -654,7 +674,7 @@ divided by 5, we end up with a remainder of 3.
 
 What has all this got to do with a clock, other than the name
 ``clock arithmetic''? To understand congruence, consider the standard
-12-hour clock face shown in
+$12$-hour clock face\index{clock face} shown in
 Figure~\ref{fig:number_theory:12_hour_clock_face}. The time $1$ AM
 corresponds to $1$, $2$ AM corresponds to $2$, and so on, up to $12$
 noon which corresponds to $12$. When we count past $12$ noon, it's
@@ -687,11 +707,12 @@ $2 \equiv 14 \pmod{12}$.
   \node [\direction] at (\nodename.\navigate) {$\nodename$};
 }
 \end{tikzpicture}
-\caption{A $12$-hour clock face.}
+\caption{A $12$-hour clock face\index{clock face}.}
 \label{fig:number_theory:12_hour_clock_face}
 \end{figure}
 
-The command \verb!mod! allows us to compute such a remainder.
+The command \verb!mod!\index{$\bmod$} allows us to compute such a
+remainder.
 
 \begin{lstlisting}
 sage: mod(23, 5)
@@ -709,10 +730,10 @@ sage: mod(14, 12)
 \end{lstlisting}
 
 If \verb!n! is an integer, we could also use \verb!n.quo_rem(m)! to
-obtain the quotient and remainder upon dividing \verb!n! by
-\verb!m!. The output of \verb!n.quo_rem(m)! is tuple consisting of two
-integers. The first integer is the quotient and the second is the
-remainder.
+obtain the quotient\index{quotient} and remainder\index{remainder}
+upon dividing \verb!n! by \verb!m!. The output of \verb!n.quo_rem(m)!
+is tuple consisting of two integers. The first integer is the quotient
+and the second is the remainder.
 %
 \begin{lstlisting}
 sage: 1.quo_rem(12)
@@ -740,9 +761,12 @@ comparing with \verb!r!.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Kid RSA}
+\index{cryptography}
+\index{Kid RSA}
 
 This section presents Kid RSA~\cite[p.17]{Koblitz1998}, a simplified
-version of the RSA cryptosystem. Neal Koblitz developed Kid RSA as a
+version of the RSA\index{RSA} cryptosystem. Neal
+Koblitz\index{Koblitz, Neal} developed Kid RSA\index{Kid RSA} as a
 tool for teaching cryptography without requiring advanced
 mathematics. Most of the necessary concepts and techniques for
 understanding Kid RSA are already presented in this chapter. It is
@@ -752,8 +776,9 @@ intended for teaching and learning purposes only. If you require more
 details about cryptography, please consult specialized texts such
 as~\cite{MenezesEtAl1996,Stinson2006,TrappeWashington2006}.
 
-In the Kid RSA system, there are two keys: the \emph{public key} and
-its corresponding \emph{private key}. A public key is used for
+In the Kid RSA system, there are two keys: the
+\emph{public key}\index{public key} and its corresponding
+\emph{private key}\index{private key}. A public key is used for
 \emph{scrambling} messages that you want to keep secret from prying
 eyes. The private key corresponding to your public key is used for
 \emph{unscrambling} the gibberish resulting from the scrambling
