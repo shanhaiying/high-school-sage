@@ -8,12 +8,14 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
 \usepackage{makeidx}
+\usepackage{xspace}
 \usepackage{url}
 
 %% Customized corollary, lemma, theorem, etc. numbering
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{exercise}[theorem]{Exercise}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -74,7 +76,25 @@
 %% Custom commands and shortcuts
 %% the latest version of this document
 \newcommand{\documentEdition}{\input{tex/version}}
-\DeclareMathOperator*{\lcm}{\text{lcm}}  %% the least common multiple
+\newcommand{\vecper}{\text{per}}  %% perpendicular component vector
+\newcommand{\vecpar}{\text{par}}  %% parallel component vector
+\newcommand{\vecvertl}{\left\Arrowvert}
+\newcommand{\vecvertr}{\right\Arrowvert}
 \newcommand{\ZZ}{\mathbf{Z}}  %% the set of integers
+
+%% vectors
+\DeclareMathOperator*{\veczero}{\textbf{0}}  %% zero vector
+\DeclareMathOperator*{\veci}{\mathbf{i}}  %% vector i
+\DeclareMathOperator*{\vecj}{\mathbf{j}}  %% vector j
+\DeclareMathOperator*{\veck}{\mathbf{k}}  %% vector k
+\DeclareMathOperator*{\vecp}{\mathbf{p}}  %% vector p
+\DeclareMathOperator*{\vectoruparen}{\mathbf{u}}  %% vector u
+\newcommand{\vecu}{\vectoruparen{}}
+\DeclareMathOperator*{\vecv}{\mathbf{v}}  %% vector v
+\DeclareMathOperator*{\vecw}{\mathbf{w}}  %% vector w
+\DeclareMathOperator*{\vecx}{\mathbf{x}}  %% vector x
+
+%% operators
+\DeclareMathOperator*{\lcm}{\text{lcm}}  %% the least common multiple
 
 \makeindex
