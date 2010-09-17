@@ -24,3 +24,110 @@
 
 \item Fitting linear functions to data
 \end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Linear equations and inequalities}
+
+A \emph{linear equation} is an expression of the form
+%
+\begin{equation}
+\label{eq:linear_functions:linear_equation_general_form}
+y
+=
+ax + b
+\end{equation}
+%
+where $a$ and $b$ can be any real numbers. Allowing $a$ to be zero
+would result in $y = 0 \times x + b = b$, whose graph is a horizontal
+line through the number $b$ on the $y$-axis. The equation $y = b$
+describes a horizontal line through the point $(0, b)$, as illustrated
+in Figure~\ref{fig:linear_functions:horizontal_line}. If $b = 0$ but
+$a \neq 0$, then the linear
+equation~(\ref{eq:linear_functions:linear_equation_general_form})
+simplifies to $y = ax$. We can visualize this equation as a line
+through the origin, as shown in
+Figure~\ref{fig:linear_functions:line_through_origin}.
+
+\begin{figure}[!htbp]
+\centering
+%% graph of horizontal line
+\subfigure[$y = b$]{
+\label{fig:linear_functions:horizontal_line}
+\begin{tikzpicture}
+[linestyle/.style={semithick},%
+ axisstyle/.style={semithick,->,>=stealth}]
+%% graph of function
+\draw[linestyle] (-2,2) -- (4,2);
+\draw[fill] (0,2) circle (0.08cm) node[above left]{$(0,b)$};
+%% horizontal and vertical axes
+\draw[axisstyle] (-2,0) -- (4,0) node[right]{$x$};
+\draw[axisstyle] (0,-0.5) -- (0,3) node[above]{$y$};
+\end{tikzpicture}
+}
+\quad
+%%
+%% graph of line through the origin
+\subfigure[$y = ax$]
+{\label{fig:linear_functions:line_through_origin}
+\begin{tikzpicture}
+[linestyle/.style={semithick},%
+ axisstyle/.style={semithick,->,>=stealth},%
+ domain=-0.25:1.5]
+%% graph of function
+\draw[linestyle] plot (\x, {2*\x});
+%% horizontal and vertical axes
+\draw[axisstyle] (-2,0) -- (4,0) node[right]{$x$};
+\draw[axisstyle] (0,-0.5) -- (0,3) node[above]{$y$};
+\end{tikzpicture}
+}
+\caption{Plot of the horizontal line and line through the origin.}
+\end{figure}
+
+In the equation $y = ax + b$, the factor $a$ is called the
+\emph{gradient} and $b$ is the $y$-intercept. Given the equation
+%
+\begin{equation}
+\label{eq:linear_functions:example_linear_equation}
+y
+=
+3x + 5
+\end{equation}
+%
+we can tell that the gradient is $a = 3$ and the $y$-intercept is
+$b = 5$. The coordinate of the $y$-intercept is $(0, 5)$. Another way
+to derive this coordinate is to set $x = 0$
+in~(\ref{eq:linear_functions:example_linear_equation}) and solve the
+resulting equation for $y$. That is,
+\[
+y
+=
+3 \times 0 + 5
+=
+5
+\]
+In other words, the $y$-intercept
+of~(\ref{eq:linear_functions:example_linear_equation}) is the point
+where $x = 0$ and $y = 5$. To find the $x$-intercept
+of~(\ref{eq:linear_functions:example_linear_equation}), we set $y = 0$
+in~(\ref{eq:linear_functions:example_linear_equation}) and solve the
+resulting equation $0 = 3x + 5$ for $x$ to get $x = -5 / 3$. Thus the
+$x$-intercept is $-5/3$, and the coordinate of the $x$-intercept is
+$(0,\; -5/3)$.
+
+\begin{lstlisting}
+sage: var("x, y");
+sage: solve(y == 0*x + 5, y)
+[y == 5]
+sage: solve(0 == 3*x + 5, x)
+[x == (-5/3)]
+\end{lstlisting}
+
+A \emph{linear inequality} has the general form as a linear equation,
+but the equal sign is now replaced by the inequality sign:
+\[
+y
+\leq
+ax + b.
+\]
