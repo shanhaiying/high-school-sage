@@ -98,6 +98,7 @@ if [ -e "book.pdf" ] && [ -f "book.pdf" ]; then
     cp -rf "$BOOK_ROOT" "$NAME$VERSION"
     mv "$NAME$VERSION"/book.pdf "$NAME$VERSION".pdf
     tar -jcf "$NAME$VERSION".tar.bz2 "$NAME$VERSION"
+    zip -q -r "$NAME$VERSION".zip "$NAME$VERSION"
     rm -rf "$NAME$VERSION"
 else
     echo "File book.pdf does not exist. Exiting..."
