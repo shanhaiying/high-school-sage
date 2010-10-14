@@ -92,16 +92,13 @@ else
 fi
 
 # Test if there is a file called "book.pdf". That file results from
-# running the command "make" from GRAPH_ROOT.
+# running the command "make" from BOOK_ROOT.
 if [ -e "book.pdf" ] && [ -f "book.pdf" ]; then
     cd ..
     cp -rf "$BOOK_ROOT" "$NAME$VERSION"
     mv "$NAME$VERSION"/book.pdf "$NAME$VERSION".pdf
     tar -jcf "$NAME$VERSION".tar.bz2 "$NAME$VERSION"
     rm -rf "$NAME$VERSION"
-    # You should now be left with the original source tree named
-    # "graph-theory-x.y". In addition, you now have two new files named
-    # "<NAME><VERSION>.tar.bz2" and "<NAME><VERSION>.pdf".
 else
     echo "File book.pdf does not exist. Exiting..."
     exit 1
